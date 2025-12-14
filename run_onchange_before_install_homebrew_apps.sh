@@ -3,11 +3,13 @@
 brew install \
     bat \
     fd \
+    font-hack-nerd-font \
     fzf \
     gh \
     jq \
     neovim \
     ripgrep \
+    starship \
     tldr \
     tmux \
     tree \
