@@ -1,6 +1,7 @@
 # --- check interactive mode ---
 
 [[ $- != *i* ]] && return
+[[ ! -z "$TOOLBOX_PATH" ]] && return
 
 # --- load configs ---
 
