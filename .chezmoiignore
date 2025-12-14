@@ -1,12 +1,12 @@
-# --- ignore if not on local machine ---
+# --- ignore in dev containers ---
 
-{{ if eq .chezmoi.username "vscode" }}
+{{- if eq .chezmoi.username "vscode" }}
 
 **/foot/**
 **/sway/**
 **/waybar/**
 
-**/run_once_before_install_hombebrew.sh
-**/run_once_install_devpod.sh
-**/run_onchange_before_install_homebrew_apps.sh
+**/*install_devpod.sh
+**/*install_homebrew*
+
 {{ end }}
