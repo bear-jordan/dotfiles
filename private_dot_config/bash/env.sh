@@ -1,4 +1,5 @@
 export PATH="$HOME/.local/scripts:$PATH"
-export EDITOR="$(which vim)"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export EDITOR="$(which nvim)"
 export PAGER="bat"
 export MANPAGER="bat -p"
