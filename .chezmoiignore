@@ -1,0 +1,6 @@
+# --- ignore if not on local machine ---
+{{ if ne .chezmoi.username "bear" }}
+foot/
+sway/
+waybar/
+{{ end }}
