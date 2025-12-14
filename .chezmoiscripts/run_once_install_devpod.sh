@@ -14,4 +14,4 @@ curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/de
 
 devpod ide use none
 
-devpod context set-options -o DOTFILES_URL=git@github.com:bear-jordan/dotfiles.git
+devpod context set-options -o DOTFILES_URL=https://github.com/bear-jordan/dotfiles.git
