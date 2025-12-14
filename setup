@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+if ! command -v chezmoi >/dev/null; then
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:bear0jordan/dotfiles.git
+fi
+
+exit 0
