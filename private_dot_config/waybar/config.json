@@ -1,0 +1,43 @@
+{
+  "layer": "top",
+
+  "modules-left": ["sway/workspaces"],
+  "modules-right": ["pulseaudio", "network", "battery", "clock"],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon}",
+    "format-muted": "{icon}",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+  "network": {
+    "format-wifi": "",
+    "format-disconnected": "󰖪",
+    "tooltip": false
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "UTC {:%H:%M}"
+  }
+}
+

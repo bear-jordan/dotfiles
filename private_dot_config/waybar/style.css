@@ -1,0 +1,94 @@
+/* base */
+* {
+  border: none;
+  font-family: "Hack Nerd Font Mono";
+  font-size: 15px;
+  min-height: 0;
+}
+
+/* entire bar */
+window#waybar {
+  background: #1a1b26;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* shared modules */
+#workspaces,
+#pulseaudio,
+#network,
+#battery,
+#clock {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 8px;
+  margin-right: 8px;
+  color: #c0caf5;
+}
+
+/* workspaces */
+#workspaces {
+  margin-left: 0;
+}
+
+#workspaces button {
+  background: transparent;
+  color: #a9b1d6;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#workspaces button.focused {
+  color: #7aa2f7;
+}
+
+#workspaces button:hover {
+  color: #c0caf5;
+}
+
+/* icons */
+#pulseaudio,
+#network,
+#battery,
+#clock {
+  color: #c0caf5;
+}
+
+/* tooltips */
+window#waybar tooltip,
+window#waybar tooltip.background,
+tooltip,
+tooltip.background {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  border-radius: 6px;
+  background: #15161e;
+  color: #c0caf5;
+
+  font-family: "Hack Nerd Font Mono";
+  font-size: 15px;
+  border: 1px solid #414868;
+}
+
+window#waybar tooltip label,
+tooltip label {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+
+  font-family: "Hack Nerd Font Mono";
+  font-size: 15px;
+  color: #c0caf5;
+}
+
