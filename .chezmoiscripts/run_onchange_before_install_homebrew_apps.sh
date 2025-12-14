@@ -10,6 +10,8 @@ brew install \
     gh \
     git-delta \
     jq \
+    kubectl \
+    kubelogin \
     libfido2 \
     mise \
     neovim \
