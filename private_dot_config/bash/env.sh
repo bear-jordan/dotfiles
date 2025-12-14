@@ -1,0 +1,6 @@
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/scripts:$PATH"
+export EDITOR="$(which nvim)"
+export HYDRATE_DIR="$HOME/personal/hydrate"
+export PAGER="bat"
+export MANPAGER="bat -p"
