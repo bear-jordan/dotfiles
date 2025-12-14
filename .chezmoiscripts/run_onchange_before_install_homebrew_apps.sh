@@ -10,6 +10,8 @@ brew install \
     gh \
     git-delta \
     jq \
+    libfido2 \
+    mise \
     neovim \
     ripgrep \
     starship \
