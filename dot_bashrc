@@ -8,5 +8,5 @@ BASH_CONFIG_DIR="$HOME/.config/bash"
 
 source "$BASH_CONFIG_DIR/alias.sh"
 source "$BASH_CONFIG_DIR/env.sh"
-source "$BASH_CONFIG_DIR/prompt.sh"
 source "$BASH_CONFIG_DIR/shell-integrations.sh"
+source "$BASH_CONFIG_DIR/prompt.sh"
