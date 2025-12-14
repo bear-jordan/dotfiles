@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# Define root folders to search
+folders=("$HOME/personal" "$HOME/work")
+
+find_git_worktrees() {
+    local repo="$1"
+    local worktrees=()
+
+    # Check if the directory is a Git repository
+    if [[ -d "$repo/.git" ]] || git -C "$repo" rev-parse --is-inside-work-tree 2>/dev/null; then
+        # List worktrees
+        while IFS= read -r worktree; do
+            worktree_path=$(echo "$worktree" | awk '{print $1}')
+            [[ -d "$worktree_path" ]] && worktrees+=("$worktree_path")
+        done < <(git -C "$repo" worktree list)
+
+        # Add main repo as an option
+        worktrees+=("$repo")
+    fi
+
+    printf "%s\n" "${worktrees[@]}"
+}
+
+# Collect all directories and their Git worktrees
+directories=()
+for folder in "${folders[@]}"; do
+    [[ -d "$folder" ]] || continue
+    while IFS= read -r dir; do
+        directories+=("$dir")
+        directories+=("$(find_git_worktrees "$dir")")
+    done < <(find "$folder" -mindepth 1 -maxdepth 1 -type d)
+done
+
+# Let user pick a directory
+selected=$(printf "%s\n" "${directories[@]}" | sort | uniq | fzf)
+
+# Exit if nothing is selected
+[[ -z "$selected" ]] && exit 0
+
+# Normalize session name
+selected_name=$(basename "$selected" | tr ":,. " "____")
+
+# Switch or create a tmux session
+switch_to() {
+    if [[ -z $TMUX ]]; then
+        tmux attach-session -t "$selected_name"
+    else
+        tmux switch-client -t "$selected_name"
+    fi
+}
+
+if tmux has-session -t="$selected_name" 2>/dev/null; then
+    switch_to
+    exit 0
+fi
+
+tmux new-session -ds "$selected_name" -c "$selected"
+switch_to
+tmux send-keys -t "$selected_name" "ready-tmux" ^M
