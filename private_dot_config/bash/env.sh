@@ -4,4 +4,4 @@ export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export EDITOR="$(which nvim)"
 export PAGER="bat"
 export MANPAGER="bat -p"
-_ZO_DOCTOR=0
+export _ZO_DOCTOR=0

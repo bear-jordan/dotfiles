@@ -13,6 +13,7 @@
     dark = true
     side-by-side = true
     line-numbers = true
+    pager = bat -p
 
 [merge]
     conflictstyle = zdiff3
