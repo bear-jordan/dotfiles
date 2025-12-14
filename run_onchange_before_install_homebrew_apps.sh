@@ -6,6 +6,7 @@ brew install \
     font-hack-nerd-font \
     fzf \
     gh \
+    git-delta \
     jq \
     neovim \
     ripgrep \
