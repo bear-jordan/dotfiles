@@ -2,6 +2,7 @@
 
 {{- if eq .chezmoi.username "vscode" }}
 
+**/bash/ssh.sh
 **/foot/**
 **/sway/**
 **/waybar/**
