@@ -3,6 +3,9 @@
 [[ $- != *i* ]] && return
 [[ ! -z "$TOOLBOX_PATH" ]] && return
 
+# --- init mise ---
+eval "$(mise activate bash)"
+
 # --- load configs ---
 
 BASH_CONFIG_DIR="$HOME/.config/bash"
