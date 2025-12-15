@@ -2,6 +2,7 @@
 
 {{- if eq .chezmoi.username "vscode" }}
 
+**/gitconfig
 **/bash/ssh.sh
 **/foot/**
 **/sway/**
