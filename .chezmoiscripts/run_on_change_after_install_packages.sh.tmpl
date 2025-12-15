@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# packages hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+
+set -eou pipefail
+
+MISE="$HOME/.local/bin/mise"
+$MISE trust "$HOME/.config/mise/config.toml" && $MISE install
+
+exit 0

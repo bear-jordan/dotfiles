@@ -1,0 +1,12 @@
+[tools]
+bat = "latest"
+chezmoi = "latest"
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+git-delta = "latest"
+jq = "latest"
+ripgrep = "latest"
+tmux = "latest"
+tree = "latest"
+zoxide = "latest"
