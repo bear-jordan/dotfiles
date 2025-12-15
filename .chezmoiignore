@@ -1,5 +1,7 @@
 # --- ignore in dev containers ---
 
+setup
+
 {{- if eq .chezmoi.username "vscode" }}
 
 **/gitconfig
