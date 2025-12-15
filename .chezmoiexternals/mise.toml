@@ -1,4 +1,4 @@
 [".local/bin/mise"]
 type = "file"
-executable = "true"
+executable = true
 url = "https://mise.jdx.dev/mise-latest-{{.chezmoi.os}}-{{.chezmoi.arch}}"
