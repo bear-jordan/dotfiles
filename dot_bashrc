@@ -3,15 +3,14 @@
 [[ $- != *i* ]] && return
 [[ ! -z "$TOOLBOX_PATH" ]] && return
 
-# --- init mise ---
-eval "$(mise activate bash)"
-
 # --- load configs ---
 
 BASH_CONFIG_DIR="$HOME/.config/bash"
 
-# source "$BASH_CONFIG_DIR/ssh.sh" || true
-# source "$BASH_CONFIG_DIR/alias.sh"
-# source "$BASH_CONFIG_DIR/env.sh"
-# source "$BASH_CONFIG_DIR/shell-integrations.sh"
-# source "$BASH_CONFIG_DIR/prompt.sh"
+source "$BASH_CONFIG_DIR/ssh.sh" || true
+source "$BASH_CONFIG_DIR/alias.sh"
+source "$BASH_CONFIG_DIR/env.sh"
+source "$BASH_CONFIG_DIR/shell-integrations.sh"
+source "$BASH_CONFIG_DIR/prompt.sh"
+
+eval "$(/var/home/bear/.local/bin/mise activate bash)" # added by https://mise.run/bash
