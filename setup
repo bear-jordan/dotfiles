@@ -2,8 +2,14 @@
 
 set -eou pipefail
 
-if ! command -v chezmoi >/dev/null; then
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/bear-jordan/dotfiles.git
-fi
+echo "[START] installing chezmoi"
+sh -c "$(curl -fsLS get.chezmoi.io)" \
+    -- init --apply https://github.com/bear-jordan/dotfiles.git
+rm -rf bin/
+echo "[END  ] installing chezmoi"
+
+echo "[START] installing mise"
+curl https://mise.run/bash | sh
+echo "[END  ] installing mise"
 
 exit 0
