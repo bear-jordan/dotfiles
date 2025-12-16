@@ -1,5 +1,4 @@
 [tools]
-1password-cli = "latest"
 aws = "latest"
 bat = "latest"
 chezmoi = "latest"

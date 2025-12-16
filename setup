@@ -16,12 +16,4 @@ echo "[START] installing devpod"
 curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 echo "[END  ] installing devpod"
 
-echo "[START] setup flatpak"
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-echo "[END  ] setup flatpak"
-
-echo "[START] install onepassword"
-flatpak install https://downloads.1password.com/linux/flatpak/1Password.flatpakref
-echo "[END  ] setup onepassword"
-
 exit 0
