@@ -1,16 +1,1 @@
-# --- ignore in dev containers ---
-
 setup
-
-{{- if eq .chezmoi.username "vscode" }}
-
-**/gitconfig
-**/bash/ssh.sh
-**/foot/**
-**/sway/**
-**/waybar/**
-
-**/*install_devpod.sh
-**/*install_homebrew*
-
-{{ end }}
