@@ -8,7 +8,6 @@ delta = "latest"
 jq = "latest"
 rg = "latest"
 starship = "latest"
-tree = "latest"
 yq = "latest"
 zoxide = "latest"
 
