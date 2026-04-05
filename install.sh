@@ -11,11 +11,6 @@ fi
 # Apply dotfiles
 "$HOME/.local/bin/chezmoi" init --apply --source="$DOTFILES_DIR"
 
-# Install mise
-if ! command -v mise &>/dev/null; then
-    curl https://mise.run | sh
-fi
-
 export PATH="$HOME/.local/bin:$PATH"
 
 # Install TPM (tmux plugin manager)
@@ -23,8 +18,14 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# Install node first (required for npm-based mason LSP servers)
-mise install node
+if [ -z $REMOTE_CONTAINERS ]; then
+    exit 0
+fi
 
-# Install remaining tools
+# Dev container only: install mise and tools
+if ! command -v mise &>/dev/null; then
+    curl https://mise.run | sh
+fi
+
+mise install node
 mise install
