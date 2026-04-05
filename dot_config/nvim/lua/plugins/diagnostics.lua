@@ -17,10 +17,11 @@ later(function()
     add('mfussenegger/nvim-lint')
     local lint = require('lint')
     lint.linters_by_ft = {
-        python = { 'ruff' },
-        hcl    = { 'tflint' },
-        tf     = { 'tflint' },
-        sql    = { 'sqlfluff' },
+        dockerfile = { 'hadolint' },
+        python     = { 'ruff' },
+        hcl        = { 'tflint' },
+        tf         = { 'tflint' },
+        sql        = { 'sqlfluff' },
     }
 
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {

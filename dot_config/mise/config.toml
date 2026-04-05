@@ -28,4 +28,5 @@ shfmt = "latest"
 stylua = "latest"
 
 # Linters
+hadolint = "latest"
 tflint = "latest"
