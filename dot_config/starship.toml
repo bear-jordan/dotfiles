@@ -8,8 +8,8 @@ $git_branch\
 $git_state\
 $git_status\
 $cmd_duration\
+$gcloud\
 $line_break\
-$python\
 $character"""
 
 [directory]
@@ -44,7 +44,9 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
-detect_extensions = []
-detect_files = []
+disabled = true
+
+[gcloud]
+format = '[\[$project\]]($style) '
+style = "bold cyan"
+symbol = ""
