@@ -17,20 +17,41 @@ later(function()
 end)
 
 later(function()
-    add('neovim/nvim-lspconfig')
+    add({
+        source = 'williamboman/mason.nvim',
+        depends = {
+            'williamboman/mason-lspconfig.nvim',
+            'neovim/nvim-lspconfig',
+        },
+    })
+
+    require('mason').setup()
+    require('mason-lspconfig').setup({
+        ensure_installed = {
+            'bashls',
+            'dockerls',
+            'jsonls',
+            'pyright',
+            'terraformls',
+            'yamlls',
+        },
+    })
+
     local lspconfig = require('lspconfig')
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- Servers with default config (binaries managed by mise)
-    local servers = { 'bashls', 'dockerls', 'jsonls', 'lua_ls', 'pyright', 'yamlls' }
-    for _, server in ipairs(servers) do
-        lspconfig[server].setup({ capabilities = capabilities })
-    end
-
-    -- Terraform
+    -- lua_ls and terraformls configured manually (managed via mise)
+    lspconfig.lua_ls.setup({ capabilities = capabilities })
     lspconfig.terraformls.setup({ capabilities = capabilities })
 
-    -- LSP keymaps on attach (telescope-based navigation)
+    -- Mason-managed servers via setup_handlers
+    require('mason-lspconfig').setup_handlers({
+        function(server_name)
+            lspconfig[server_name].setup({ capabilities = capabilities })
+        end,
+    })
+
+    -- LSP keymaps on attach
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
@@ -38,9 +59,9 @@ later(function()
             local map = function(mode, key, cmd, desc)
                 vim.keymap.set(mode, key, cmd, { buffer = buf, desc = desc })
             end
-            map('n', 'gR', '<cmd>Telescope lsp_references<CR>',      'Show LSP references')
-            map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>',     'Go to definitions')
-            map('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', 'Go to implementation')
+            map('n', 'gR', '<cmd>Telescope lsp_references<CR>',       'Show LSP references')
+            map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>',      'Go to definitions')
+            map('n', 'gi', '<cmd>Telescope lsp_implementations<CR>',  'Go to implementation')
             map('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>', 'Go to type definitions')
             map('n', '<leader>d', '<cmd>Telescope diagnostics bufnr=0<CR>', 'Buffer diagnostics')
         end,
