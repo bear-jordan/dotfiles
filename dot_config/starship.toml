@@ -1,10 +1,10 @@
 format = """
-$directory$custom.git_repo$git_branch$git_status $gcloud
+$directory${custom.git_repo}$git_branch$git_status $gcloud
 $character"""
 
 [directory]
 truncation_length = 3
-truncate_to_repo = false
+truncate_to_repo = true
 
 [custom.git_repo]
 command = "basename $(git rev-parse --show-toplevel 2>/dev/null)"
