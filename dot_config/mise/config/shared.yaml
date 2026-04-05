@@ -1,5 +1,6 @@
 tools:
   # Shell utilities (also in Brewfile)
+  node: latest
   bat: latest
   delta: latest
   lazygit: latest
