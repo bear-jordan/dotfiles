@@ -7,10 +7,12 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 echo "==> Removing chezmoi-managed dotfiles..."
 if command -v chezmoi &>/dev/null; then
     chezmoi managed --include=files | while read -r file; do
-        [ -f "$file" ] && rm -f "$file" && echo "  removed $file"
+        full="$HOME/$file"
+        [ -f "$full" ] && rm -f "$full" && echo "  removed $full"
     done
     chezmoi managed --include=dirs | sort -r | while read -r dir; do
-        [ -d "$dir" ] && rmdir "$dir" 2>/dev/null && echo "  removed $dir"
+        full="$HOME/$dir"
+        [ -d "$full" ] && rmdir "$full" 2>/dev/null && echo "  removed $full"
     done
 fi
 
