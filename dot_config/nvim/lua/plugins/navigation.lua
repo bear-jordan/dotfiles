@@ -11,7 +11,6 @@ later(function()
         source = 'nvim-telescope/telescope.nvim',
         depends = {
             'nvim-lua/plenary.nvim',
-            { source = 'nvim-telescope/telescope-fzf-native.nvim', hooks = { post_install = function() vim.cmd('!make') end } },
             'nvim-telescope/telescope-ui-select.nvim',
         },
     })
@@ -21,7 +20,6 @@ later(function()
             ['ui-select'] = { require('telescope.themes').get_dropdown() },
         },
     })
-    telescope.load_extension('fzf')
     telescope.load_extension('ui-select')
 
     local map = vim.keymap.set
