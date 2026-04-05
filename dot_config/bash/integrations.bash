@@ -7,7 +7,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
 fi
-eval "$(mise activate bash)"
+[[ -n "$REMOTE_CONTAINERS" ]] && eval "$(mise activate bash)"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(sesh completion bash)"
