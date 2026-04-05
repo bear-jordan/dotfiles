@@ -1,0 +1,10 @@
+[metadata]
+name = "podman-images"
+description = "Browse local podman images"
+requirements = ["podman"]
+
+[source]
+command = "podman images --format '{{.Repository}}:{{.Tag}}'"
+
+[preview]
+command = "podman inspect {} | bat --language json -n --color=always"

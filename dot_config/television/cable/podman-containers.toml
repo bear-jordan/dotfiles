@@ -1,0 +1,10 @@
+[metadata]
+name = "podman-containers"
+description = "Browse running podman containers"
+requirements = ["podman"]
+
+[source]
+command = "podman ps --format '{{.Names}} | {{.Image}} | {{.Status}}'"
+
+[preview]
+command = "podman logs --tail 20 {1} 2>&1"

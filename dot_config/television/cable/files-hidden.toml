@@ -1,0 +1,10 @@
+[metadata]
+name = "files-hidden"
+description = "Find all files including hidden"
+requirements = ["fd"]
+
+[source]
+command = "fd --hidden --type f"
+
+[preview]
+command = "bat -n --color=always {}"

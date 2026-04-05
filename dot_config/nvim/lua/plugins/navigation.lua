@@ -7,27 +7,70 @@ later(function()
 end)
 
 later(function()
-    add({
-        source = 'nvim-telescope/telescope.nvim',
-        depends = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-ui-select.nvim',
+    add('alexpasmantier/tv.nvim')
+    local h = require('tv').handlers
+    require('tv').setup({
+        channels = {
+            files = {
+                keybinding = '<leader>ff',
+                handlers = {
+                    ['<CR>']  = h.open_as_files,
+                    ['<C-q>'] = h.send_to_quickfix,
+                    ['<C-s>'] = h.open_in_split,
+                    ['<C-v>'] = h.open_in_vsplit,
+                },
+            },
+            ['files-hidden'] = {
+                keybinding = '<leader>fa',
+                handlers = {
+                    ['<CR>']  = h.open_as_files,
+                    ['<C-q>'] = h.send_to_quickfix,
+                    ['<C-s>'] = h.open_in_split,
+                    ['<C-v>'] = h.open_in_vsplit,
+                },
+            },
+            text = {
+                keybinding = '<leader>fg',
+                handlers = {
+                    ['<CR>']  = h.open_at_line,
+                    ['<C-q>'] = h.send_to_quickfix,
+                    ['<C-s>'] = h.open_in_split,
+                    ['<C-v>'] = h.open_in_vsplit,
+                },
+            },
+            ['podman-images'] = {
+                keybinding = '<leader>fo',
+                handlers = {
+                    ['<CR>']  = function(e) vim.cmd('terminal podman run -it --rm ' .. vim.fn.shellescape(e[1]) .. ' bash') end,
+                    ['<C-s>'] = function(e) vim.cmd('terminal podman run -it --rm ' .. vim.fn.shellescape(e[1]) .. ' sh') end,
+                    ['<C-r>'] = function(e) vim.fn.jobstart({'podman', 'run', '-d', e[1]}) end,
+                    ['<C-p>'] = function(e) vim.fn.jobstart({'podman', 'pull', e[1]}) end,
+                    ['<C-d>'] = function(e) vim.fn.jobstart({'podman', 'rmi', e[1]}) end,
+                },
+            },
+            ['podman-containers'] = {
+                keybinding = '<leader>fc',
+                handlers = {
+                    ['<CR>']  = function(e) vim.cmd('terminal podman exec -it ' .. vim.fn.shellescape(e[1]:match('^%S+')) .. ' bash') end,
+                    ['<C-s>'] = function(e) vim.cmd('terminal podman exec -it ' .. vim.fn.shellescape(e[1]:match('^%S+')) .. ' sh') end,
+                    ['<C-l>'] = function(e) vim.cmd('terminal podman logs -f ' .. vim.fn.shellescape(e[1]:match('^%S+'))) end,
+                    ['<C-t>'] = function(e) vim.fn.jobstart({'podman', 'stop', e[1]:match('^%S+')}) end,
+                    ['<C-r>'] = function(e) vim.fn.jobstart({'podman', 'restart', e[1]:match('^%S+')}) end,
+                    ['<C-d>'] = function(e) vim.fn.jobstart({'podman', 'rm', '-f', e[1]:match('^%S+')}) end,
+                },
+            },
+            env = {
+                keybinding = '<leader>fe',
+                handlers = {
+                    ['<CR>'] = h.insert_at_cursor,
+                },
+            },
         },
     })
-    local telescope = require('telescope')
-    telescope.setup({
-        extensions = {
-            ['ui-select'] = { require('telescope.themes').get_dropdown() },
-        },
-    })
-    telescope.load_extension('ui-select')
 
-    local map = vim.keymap.set
-    map('n', '<leader>ff', '<cmd>Telescope find_files<cr>',            { desc = 'Find files' })
-    map('n', '<leader>fa', '<cmd>Telescope find_files hidden=true<cr>', { desc = 'Find all files' })
-    map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>',             { desc = 'Live grep' })
-    map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>',              { desc = 'Recent files' })
-    map('n', '<leader>fs', '<cmd>Telescope grep_string<cr>',           { desc = 'Grep string' })
+    vim.keymap.set('n', '<leader>fs', function()
+        vim.cmd('Tv text @' .. vim.fn.expand('<cword>'))
+    end, { desc = 'Grep string' })
 end)
 
 later(function()
