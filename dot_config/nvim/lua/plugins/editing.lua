@@ -15,12 +15,15 @@ later(function()
         source = 'nvim-treesitter/nvim-treesitter',
         hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
     })
-    require('nvim-treesitter.configs').setup({
-        ensure_installed = {
-            'bash', 'dockerfile', 'go', 'hcl', 'json', 'lua',
-            'markdown', 'markdown_inline', 'python', 'sql', 'yaml',
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
-    })
+    local ok, configs = pcall(require, 'nvim-treesitter.configs')
+    if ok then
+        configs.setup({
+            ensure_installed = {
+                'bash', 'dockerfile', 'go', 'hcl', 'json', 'lua',
+                'markdown', 'markdown_inline', 'python', 'sql', 'yaml',
+            },
+            highlight = { enable = true },
+            indent = { enable = true },
+        })
+    end
 end)
