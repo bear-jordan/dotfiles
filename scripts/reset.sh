@@ -16,6 +16,10 @@ if command -v chezmoi &>/dev/null; then
     done
 fi
 
+echo "==> Clearing chezmoi state..."
+rm -rf "$HOME/.local/share/chezmoi"
+rm -rf "$HOME/.config/chezmoi"
+
 echo "==> Removing chezmoi binary..."
 rm -f "$HOME/.local/bin/chezmoi"
 
