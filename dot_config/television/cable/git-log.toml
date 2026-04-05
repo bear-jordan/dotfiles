@@ -1,0 +1,11 @@
+[metadata]
+name = "git-log"
+description = "Browse git commit history with delta preview"
+requirements = ["git", "delta"]
+
+[source]
+command = "git log --oneline --color=always"
+ansi = true
+
+[preview]
+command = "git show --stat --patch --color=always {1} | delta"

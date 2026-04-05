@@ -1,9 +1,7 @@
 [tools]
 # Shell utilities
 bat = "latest"
-btop = "latest"
 fd = "latest"
-fzf = "latest"
 delta = "latest"
 jq = "latest"
 rg = "latest"
