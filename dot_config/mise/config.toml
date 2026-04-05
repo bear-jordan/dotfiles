@@ -1,6 +1,3 @@
-[settings]
-experimental = true
-
 [tools]
 # Shell utilities
 btop = "latest"
@@ -25,5 +22,4 @@ shfmt = "latest"
 stylua = "latest"
 
 # Linters
-"uv:sqlfluff" = "latest"
 tflint = "latest"
