@@ -13,43 +13,18 @@ later(function()
         completion = {
             documentation = { auto_show = true },
         },
+        fuzzy = { implementation = 'lua' },
     })
 end)
 
 later(function()
-    add({
-        source = 'williamboman/mason.nvim',
-        depends = {
-            'williamboman/mason-lspconfig.nvim',
-            'neovim/nvim-lspconfig',
-        },
-    })
-
-    require('mason').setup()
-    require('mason-lspconfig').setup({
-        ensure_installed = {
-            'bashls',
-            'dockerls',
-            'jsonls',
-            'pyright',
-            'terraformls',
-            'yamlls',
-        },
-    })
-
-    local lspconfig = require('lspconfig')
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- lua_ls and terraformls configured manually (managed via mise)
-    lspconfig.lua_ls.setup({ capabilities = capabilities })
-    lspconfig.terraformls.setup({ capabilities = capabilities })
-
-    -- Mason-managed servers via setup_handlers
-    require('mason-lspconfig').setup_handlers({
-        function(server_name)
-            lspconfig[server_name].setup({ capabilities = capabilities })
-        end,
-    })
+    -- LSP servers managed via mise binaries
+    -- lua_ls: lua-language-server, terraformls: terraform-ls
+    vim.lsp.config('lua_ls', { capabilities = capabilities })
+    vim.lsp.config('terraformls', { capabilities = capabilities })
+    vim.lsp.enable({ 'lua_ls', 'terraformls' })
 
     -- LSP keymaps on attach
     vim.api.nvim_create_autocmd('LspAttach', {
