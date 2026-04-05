@@ -15,7 +15,7 @@ ff() {
         return
     fi
     local out key file
-    out=$(tv files --expect='ctrl-s,ctrl-v')
+    out=$(tv files --expect='ctrl-s' --expect='ctrl-v')
     key=$(head -1 <<< "$out")
     file=$(tail -1 <<< "$out")
     [[ -z "$file" ]] && return
@@ -36,7 +36,7 @@ fa() {
         return
     fi
     local out key file
-    out=$(tv files-hidden --expect='ctrl-s,ctrl-v')
+    out=$(tv files-hidden --expect='ctrl-s' --expect='ctrl-v')
     key=$(head -1 <<< "$out")
     file=$(tail -1 <<< "$out")
     [[ -z "$file" ]] && return
@@ -59,7 +59,7 @@ fo() {
         return
     fi
     local out key image
-    out=$(tv podman-images --expect='ctrl-s,ctrl-r,ctrl-p,ctrl-d')
+    out=$(tv podman-images --expect='ctrl-s' --expect='ctrl-r' --expect='ctrl-p' --expect='ctrl-d')
     key=$(head -1 <<< "$out")
     image=$(tail -1 <<< "$out")
     [[ -z "$image" ]] && return
@@ -85,7 +85,7 @@ fc() {
         return
     fi
     local out key line name
-    out=$(tv podman-containers --expect='ctrl-s,ctrl-l,ctrl-t,ctrl-r,ctrl-d')
+    out=$(tv podman-containers --expect='ctrl-s' --expect='ctrl-l' --expect='ctrl-t' --expect='ctrl-r' --expect='ctrl-d')
     key=$(head -1 <<< "$out")
     line=$(tail -1 <<< "$out")
     name=$(echo "$line" | cut -d' ' -f1)
