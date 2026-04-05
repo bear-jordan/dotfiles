@@ -18,5 +18,8 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Install tools defined in ~/.config/mise/config.toml
+# Install runtimes first (node required for npm packages, uv for python packages)
+mise install node uv
+
+# Install remaining tools
 mise install

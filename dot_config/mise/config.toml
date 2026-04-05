@@ -11,6 +11,10 @@ zoxide = "latest"
 # Editor
 neovim = "latest"
 
+# Runtimes (required before npm/uv packages)
+node = "latest"
+uv = "latest"
+
 # LSP servers
 "npm:bash-language-server" = "latest"
 "npm:dockerfile-language-server-nodejs" = "latest"
@@ -28,5 +32,5 @@ shfmt = "latest"
 stylua = "latest"
 
 # Linters
-"pipx:sqlfluff" = "latest"
+"uv:sqlfluff" = "latest"
 tflint = "latest"
