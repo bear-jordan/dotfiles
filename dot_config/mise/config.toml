@@ -1,3 +1,6 @@
+[settings]
+experimental = true
+
 [tools]
 # Shell utilities
 btop = "latest"
