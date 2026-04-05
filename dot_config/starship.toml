@@ -1,0 +1,39 @@
+format = """
+$directory$custom.git_repo$git_branch$git_status $gcloud
+$character"""
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+
+[custom.git_repo]
+command = "basename $(git rev-parse --show-toplevel 2>/dev/null)"
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+format = "[$output/]($style)"
+style = "bold blue"
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bold blue"
+
+[git_status]
+format = '([ $all_status$ahead_behind]($style))'
+style = "yellow"
+ahead = "↑"
+behind = "↓"
+diverged = "↕"
+modified = "!"
+untracked = "?"
+staged = "+"
+
+[gcloud]
+format = '[\[$project\]]($style) '
+style = "bold cyan"
+symbol = ""
+
+[terraform]
+disabled = true
+
+[character]
+success_symbol = "[->](bold green)"
+error_symbol = "[->](bold red)"
