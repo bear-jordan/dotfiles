@@ -33,7 +33,9 @@ later(function()
             'bashls',
             'dockerls',
             'jsonls',
+            'lua_ls',
             'pyright',
+            'terraformls',
             'yamlls',
         },
         handlers = {
@@ -43,11 +45,6 @@ later(function()
             end,
         },
     })
-
-    -- Servers managed via mise
-    vim.lsp.config('lua_ls', { capabilities = capabilities })
-    vim.lsp.config('terraformls', { capabilities = capabilities })
-    vim.lsp.enable({ 'lua_ls', 'terraformls' })
 
     -- LSP keymaps on attach
     vim.api.nvim_create_autocmd('LspAttach', {

@@ -1,0 +1,20 @@
+formulas:
+  - btop
+  - cloud-nuke
+  - podman
+  - sesh
+  - television
+  - tldr
+  - tmux
+  - tree
+  - vhs
+  - visidata
+
+casks:
+  - 1password
+  - claude-code
+  - devpod
+  - ghostty
+  - google-cloud-sdk
+  - nikitabobko/tap/aerospace
+  - obsidian

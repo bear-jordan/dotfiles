@@ -1,0 +1,21 @@
+tools:
+  # Shell utilities (also in Brewfile)
+  bat: latest
+  delta: latest
+  lazygit: latest
+  fd: latest
+  jq: latest
+  neovim: latest
+  rg: latest
+  starship: latest
+  yq: latest
+  zoxide: latest
+
+  # Formatters (also in Brewfile)
+  ruff: latest
+  shfmt: latest
+  stylua: latest
+
+  # Linters (also in Brewfile)
+  hadolint: latest
+  tflint: latest
