@@ -17,13 +17,11 @@ neovim = "latest"
 "npm:pyright" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:yaml-language-server" = "latest"
-"go:golang.org/x/tools/gopls" = "latest"
 lua-language-server = "latest"
 terraform-ls = "latest"
 
 # Formatters
 "npm:prettier" = "latest"
-"go:golang.org/x/tools/cmd/goimports" = "latest"
 ruff = "latest"
 shfmt = "latest"
 stylua = "latest"

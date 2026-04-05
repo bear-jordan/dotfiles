@@ -6,7 +6,6 @@ later(function()
         formatters_by_ft = {
             lua    = { 'stylua' },
             python = { 'ruff_format' },
-            go     = { 'goimports', 'gofmt' },
             bash   = { 'shfmt' },
             sh     = { 'shfmt' },
             yaml   = { 'prettier' },

@@ -27,21 +27,6 @@ later(function()
         lspconfig[server].setup({ capabilities = capabilities })
     end
 
-    -- Go: disable formatting (handled by conform)
-    lspconfig.gopls.setup({
-        capabilities = capabilities,
-        on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
-        end,
-        settings = {
-            gopls = {
-                completeUnimported = true,
-                analyses = { unusedparams = true },
-                staticcheck = true,
-            },
-        },
-    })
-
     -- Terraform
     lspconfig.terraformls.setup({ capabilities = capabilities })
 
