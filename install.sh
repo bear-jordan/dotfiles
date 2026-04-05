@@ -9,7 +9,7 @@ if ! command -v chezmoi &>/dev/null; then
 fi
 
 # Apply dotfiles
-"$HOME/.local/bin/chezmoi" init --apply bear-jordan/devpod-setup
+"$HOME/.local/bin/chezmoi" init --apply --source="$DOTFILES_DIR"
 
 # Install mise
 if ! command -v mise &>/dev/null; then
