@@ -34,5 +34,3 @@
     sort = -committerdate
     autosetuprebase = always
 
-[remote "origin"]
-    fetch = +refs/heads/*:refs/remotes/origin/*
