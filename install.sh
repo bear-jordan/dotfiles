@@ -18,6 +18,11 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Install TPM (tmux plugin manager)
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 # Install node first (required for npm-based mason LSP servers)
 mise install node
 

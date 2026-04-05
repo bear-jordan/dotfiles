@@ -1,11 +1,15 @@
 [tools]
 # Shell utilities
+bat = "latest"
 btop = "latest"
 fd = "latest"
 fzf = "latest"
+git-delta = "latest"
 jq = "latest"
 rg = "latest"
 starship = "latest"
+tree = "latest"
+yq = "latest"
 zoxide = "latest"
 
 # Editor
