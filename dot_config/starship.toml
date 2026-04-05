@@ -47,6 +47,6 @@ style = "yellow"
 disabled = true
 
 [gcloud]
-format = '[\[$project( \($active_account\))\]]($style) '
+format = '[($project( \($active_account\)) )]($style)'
 style = "bold cyan"
 symbol = ""
