@@ -18,13 +18,38 @@ later(function()
 end)
 
 later(function()
+    add({
+        source = 'williamboman/mason.nvim',
+        depends = {
+            'williamboman/mason-lspconfig.nvim',
+        },
+    })
+
+    require('mason').setup()
+    require('mason-lspconfig').setup({
+        ensure_installed = {
+            'bashls',
+            'dockerls',
+            'jsonls',
+            'pyright',
+            'yamlls',
+        },
+    })
+
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    -- LSP servers managed via mise binaries
-    -- lua_ls: lua-language-server, terraformls: terraform-ls
+    -- Servers managed via mise
     vim.lsp.config('lua_ls', { capabilities = capabilities })
     vim.lsp.config('terraformls', { capabilities = capabilities })
     vim.lsp.enable({ 'lua_ls', 'terraformls' })
+
+    -- Mason-managed servers via native vim.lsp API
+    require('mason-lspconfig').setup_handlers({
+        function(server_name)
+            vim.lsp.config(server_name, { capabilities = capabilities })
+            vim.lsp.enable(server_name)
+        end,
+    })
 
     -- LSP keymaps on attach
     vim.api.nvim_create_autocmd('LspAttach', {

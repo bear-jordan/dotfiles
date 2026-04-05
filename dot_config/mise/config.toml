@@ -11,6 +11,9 @@ zoxide = "latest"
 # Editor
 neovim = "latest"
 
+# Runtime (required for npm-based LSP servers via mason)
+node = "lts"
+
 # LSP servers managed by mason inside neovim
 lazygit = "latest"
 lua-language-server = "latest"

@@ -18,5 +18,8 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Install tools defined in ~/.config/mise/config.toml
+# Install node first (required for npm-based mason LSP servers)
+mise install node
+
+# Install remaining tools
 mise install
