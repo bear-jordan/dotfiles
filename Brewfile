@@ -1,6 +1,7 @@
 # CLI tools
 brew "bat"
 brew "btop"
+brew "cloud-nuke"
 brew "fd"
 brew "television"
 brew "git-delta"
