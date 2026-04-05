@@ -17,6 +17,7 @@ neovim = "latest"
 "npm:pyright" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
 "npm:yaml-language-server" = "latest"
+lazygit = "latest"
 lua-language-server = "latest"
 terraform-ls = "latest"
 

@@ -24,6 +24,7 @@ later(function() require('plugins.navigation') end)
 later(function() require('plugins.lsp') end)
 later(function() require('plugins.formatting') end)
 later(function() require('plugins.diagnostics') end)
+later(function() require('plugins.git') end)
 later(function() require('plugins.workflow') end)
 
 -- Keymaps last (plugins must be loaded first)
