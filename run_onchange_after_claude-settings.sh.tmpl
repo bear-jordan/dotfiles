@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Sets Claude Code preferences in ~/.claude.json
+# Hash: {{ include (joinPath .chezmoi.sourceDir "run_onchange_after_claude-settings.sh.tmpl") | sha256sum }}
+if command -v jq &>/dev/null && [ -f "$HOME/.claude.json" ]; then
+    tmp=$(mktemp)
+    jq '.theme = "dark" | .editorMode = "vim"' "$HOME/.claude.json" > "$tmp" && mv "$tmp" "$HOME/.claude.json"
+fi
