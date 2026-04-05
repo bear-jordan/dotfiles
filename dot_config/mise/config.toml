@@ -1,0 +1,9 @@
+[tools]
+btop = "latest"
+fd = "latest"
+fzf = "latest"
+jq = "latest"
+neovim = "latest"
+rg = "latest"
+starship = "latest"
+zoxide = "latest"

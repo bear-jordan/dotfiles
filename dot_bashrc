@@ -1,0 +1,4 @@
+for f in "$HOME/.config/bash/"*.bash; do
+    [ -r "$f" ] && source "$f"
+done
+unset f
