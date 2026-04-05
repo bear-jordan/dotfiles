@@ -7,7 +7,6 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.scrolloff = 8
-opt.clipboard = 'unnamedplus'
 vim.g.clipboard = {
     name = 'OSC 52',
     copy = {
@@ -19,6 +18,7 @@ vim.g.clipboard = {
         ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
     },
 }
+opt.clipboard = 'unnamedplus'
 opt.undofile = true
 opt.termguicolors = true
 opt.signcolumn = 'yes'
