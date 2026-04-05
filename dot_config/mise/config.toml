@@ -28,5 +28,5 @@ shfmt = "latest"
 stylua = "latest"
 
 # Linters
-sqlfluff = "latest"
+"pipx:sqlfluff" = "latest"
 tflint = "latest"
