@@ -1,0 +1,38 @@
+[user]
+    name = bear-jordan
+    email = bearjordan@gmail.com
+
+[core]
+    editor = nvim
+
+[init]
+    defaultBranch = main
+
+[rerere]
+    enabled = true
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    default = current
+
+[fetch]
+    prune = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[diff]
+    algorithm = histogram
+
+[log]
+    abbrevCommit = true
+
+[branch]
+    sort = -committerdate
+    autosetuprebase = always
+
+[remote "origin"]
+    fetch = +refs/heads/*:refs/remotes/origin/*
