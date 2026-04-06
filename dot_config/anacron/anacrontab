@@ -1,0 +1,3 @@
+# period(days)  delay(min)  job-id        command
+1               5           brew-upgrade  /opt/homebrew/bin/brew upgrade
+7               10          tf-docs-sync  git -C ~/.local/share/tf-docs/google pull --ff-only

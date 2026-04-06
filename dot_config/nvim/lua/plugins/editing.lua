@@ -11,6 +11,11 @@ later(function()
 end)
 
 later(function()
+    add('kylechui/nvim-surround')
+    require('nvim-surround').setup()
+end)
+
+later(function()
     add({
         source = 'nvim-treesitter/nvim-treesitter',
         hooks = { post_checkout = function() vim.cmd('TSUpdate') end },

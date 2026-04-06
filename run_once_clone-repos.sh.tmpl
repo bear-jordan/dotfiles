@@ -9,4 +9,9 @@ fi
 if [ ! -d ~/personal/lab ]; then
     git clone git@github.com:bear-jordan/lab ~/personal/lab
 fi
+
+if [ ! -d ~/.local/share/tf-docs/google ]; then
+    mkdir -p ~/.local/share/tf-docs
+    git clone --depth=1 https://github.com/hashicorp/terraform-provider-google ~/.local/share/tf-docs/google
+fi
 {{ end -}}

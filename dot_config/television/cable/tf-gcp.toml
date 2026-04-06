@@ -1,0 +1,10 @@
+[metadata]
+name = "tf-gcp"
+description = "Browse GCP Terraform provider docs"
+requirements = ["fd", "bat"]
+
+[source]
+command = "fd --type f -e markdown --base-directory ~/.local/share/tf-docs/google/website/docs"
+
+[preview]
+command = "bat -n --color=always ~/.local/share/tf-docs/google/website/docs/{}"

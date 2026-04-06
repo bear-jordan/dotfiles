@@ -1,4 +1,5 @@
 formulas:
+  - anacron
   - btop
   - cloud-nuke
   - podman
