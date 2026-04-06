@@ -1,1 +1,2 @@
 command = /bin/bash
+clipboard-paste-protection = false
