@@ -3,6 +3,7 @@ formulas:
   - cloud-nuke
   - podman
   - sesh
+  - go
   - television
   - tldr
   - tmux
