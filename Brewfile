@@ -20,7 +20,6 @@ brew "yq"
 brew "zoxide"
 
 # Host-only formulas
-brew "anacron"
 brew "btop"
 brew "cloud-nuke"
 brew "podman"
