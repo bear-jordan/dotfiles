@@ -75,7 +75,7 @@ tv.nvim channels mirror the bash functions (`<leader>fo` = podman-images, `<lead
 
 ## Tmux (`dot_config/tmux/tmux.conf`)
 
-- Prefix: `C-Space`
+- Prefix: `C-a`
 - Splits: `prefix + -` (horizontal/down), `prefix + |` (vertical/right)
 - Pane nav: `C-h/j/k/l` (vim-tmux-navigator aware)
 - Session picker: `prefix + s` → tv sesh popup

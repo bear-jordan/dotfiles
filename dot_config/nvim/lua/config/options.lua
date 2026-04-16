@@ -7,21 +7,10 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.scrolloff = 8
-vim.g.clipboard = {
-    name = 'OSC 52',
-    copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-    },
-    paste = {
-        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-    },
-}
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.termguicolors = true
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
