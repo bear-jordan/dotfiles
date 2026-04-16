@@ -15,7 +15,7 @@ casks:
   - claude-code
   - devpod
   - ghostty
-  - google-cloud-sdk
+  - gcloud-cli
   - nikitabobko/tap/aerospace
   - obsidian
   - spotify
