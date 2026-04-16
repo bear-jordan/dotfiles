@@ -3,6 +3,7 @@ alias ll="ls -alh"
 alias c="clear"
 alias k="kubectl"
 alias sb="source ~/.bashrc"
+alias st="tmux source-file ~/.config/tmux/tmux.conf"
 alias cm="chezmoi"
 alias cm-sync="chezmoi update"
 ff() {
@@ -16,13 +17,13 @@ ff() {
     fi
     local out key file
     out=$(tv files --expect='ctrl-s' --expect='ctrl-v')
-    key=$(head -1 <<< "$out")
-    file=$(tail -1 <<< "$out")
+    key=$(head -1 <<<"$out")
+    file=$(tail -1 <<<"$out")
     [[ -z "$file" ]] && return
     case "$key" in
-        ctrl-s) tmux split-window -v -c "$(pwd)" "nvim '$file'" ;;
-        ctrl-v) tmux split-window -h -c "$(pwd)" "nvim '$file'" ;;
-        *)      nvim "$file" ;;
+    ctrl-s) tmux split-window -v -c "$(pwd)" "nvim '$file'" ;;
+    ctrl-v) tmux split-window -h -c "$(pwd)" "nvim '$file'" ;;
+    *) nvim "$file" ;;
     esac
 }
 
@@ -37,13 +38,13 @@ fa() {
     fi
     local out key file
     out=$(tv files-hidden --expect='ctrl-s' --expect='ctrl-v')
-    key=$(head -1 <<< "$out")
-    file=$(tail -1 <<< "$out")
+    key=$(head -1 <<<"$out")
+    file=$(tail -1 <<<"$out")
     [[ -z "$file" ]] && return
     case "$key" in
-        ctrl-s) tmux split-window -v -c "$(pwd)" "nvim '$file'" ;;
-        ctrl-v) tmux split-window -h -c "$(pwd)" "nvim '$file'" ;;
-        *)      nvim "$file" ;;
+    ctrl-s) tmux split-window -v -c "$(pwd)" "nvim '$file'" ;;
+    ctrl-v) tmux split-window -h -c "$(pwd)" "nvim '$file'" ;;
+    *) nvim "$file" ;;
     esac
 }
 
@@ -60,15 +61,15 @@ fo() {
     fi
     local out key image
     out=$(tv podman-images --expect='ctrl-s' --expect='ctrl-r' --expect='ctrl-p' --expect='ctrl-d')
-    key=$(head -1 <<< "$out")
-    image=$(tail -1 <<< "$out")
+    key=$(head -1 <<<"$out")
+    image=$(tail -1 <<<"$out")
     [[ -z "$image" ]] && return
     case "$key" in
-        ctrl-s) podman run -it --rm "$image" sh ;;
-        ctrl-r) podman run -d "$image" ;;
-        ctrl-p) podman pull "$image" ;;
-        ctrl-d) podman rmi "$image" ;;
-        *)      podman run -it --rm "$image" bash ;;
+    ctrl-s) podman run -it --rm "$image" sh ;;
+    ctrl-r) podman run -d "$image" ;;
+    ctrl-p) podman pull "$image" ;;
+    ctrl-d) podman rmi "$image" ;;
+    *) podman run -it --rm "$image" bash ;;
     esac
 }
 
@@ -86,17 +87,17 @@ fc() {
     fi
     local out key line name
     out=$(tv podman-containers --expect='ctrl-s' --expect='ctrl-l' --expect='ctrl-t' --expect='ctrl-r' --expect='ctrl-d')
-    key=$(head -1 <<< "$out")
-    line=$(tail -1 <<< "$out")
+    key=$(head -1 <<<"$out")
+    line=$(tail -1 <<<"$out")
     name=$(echo "$line" | cut -d' ' -f1)
     [[ -z "$name" ]] && return
     case "$key" in
-        ctrl-s) podman exec -it "$name" sh ;;
-        ctrl-l) podman logs -f "$name" ;;
-        ctrl-t) podman stop "$name" ;;
-        ctrl-r) podman restart "$name" ;;
-        ctrl-d) podman rm -f "$name" ;;
-        *)      podman exec -it "$name" bash ;;
+    ctrl-s) podman exec -it "$name" sh ;;
+    ctrl-l) podman logs -f "$name" ;;
+    ctrl-t) podman stop "$name" ;;
+    ctrl-r) podman restart "$name" ;;
+    ctrl-d) podman rm -f "$name" ;;
+    *) podman exec -it "$name" bash ;;
     esac
 }
 
