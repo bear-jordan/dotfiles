@@ -1,12 +1,13 @@
 tools:
   # Shell utilities (also in Brewfile)
-  node: latest
   bat: latest
   delta: latest
-  lazygit: latest
   fd: latest
+  gh: latest
   jq: latest
+  lazygit: latest
   neovim: latest
+  node: latest
   rg: latest
   starship: latest
   yq: latest
