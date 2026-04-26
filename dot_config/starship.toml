@@ -3,7 +3,7 @@
 format = """
 $username\
 $hostname\
-$env_var\
+${env_var.REMOTE_CONTAINERS}\
 $directory\
 $git_branch\
 $git_state\
