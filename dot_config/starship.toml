@@ -3,6 +3,7 @@
 format = """
 $username\
 $hostname\
+$env_var\
 $directory\
 $git_branch\
 $git_state\
@@ -11,6 +12,11 @@ $cmd_duration\
 $gcloud\
 $line_break\
 $character"""
+
+[env_var.REMOTE_CONTAINERS]
+format = "[(devpod)]($style) "
+style = "yellow"
+variable = "REMOTE_CONTAINERS"
 
 [directory]
 style = "blue"
