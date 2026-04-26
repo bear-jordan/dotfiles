@@ -2,7 +2,13 @@ local add, later = MiniDeps.add, MiniDeps.later
 
 later(function()
     add('stevearc/oil.nvim')
-    require('oil').setup({ default_file_explorer = true })
+    require('oil').setup({
+        default_file_explorer = true,
+        keymaps = {
+            ['l'] = { 'actions.select', opts = { close = true } },
+            ['h'] = 'actions.parent',
+        },
+    })
     vim.keymap.set('n', '-', function() require('oil').open_float() end, { desc = 'Open parent directory' })
 end)
 
