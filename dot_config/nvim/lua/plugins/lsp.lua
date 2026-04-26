@@ -9,7 +9,7 @@ later(function()
 end)
 
 later(function()
-    add('Saghen/blink.cmp')
+    add({ source = 'Saghen/blink.cmp', depends = { 'Saghen/blink.lib' } })
     require('blink.cmp').setup({
         keymap = {
             preset = 'default',
