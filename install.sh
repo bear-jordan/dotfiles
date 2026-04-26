@@ -4,7 +4,11 @@ set -e
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 fetch() {
-    curl -fsLS "$1" 2>/dev/null || wget -qO- "$1"
+    if command -v curl &>/dev/null; then
+        curl -fsLS "$1"
+    else
+        wget -qO- "$1"
+    fi
 }
 
 # Install chezmoi
