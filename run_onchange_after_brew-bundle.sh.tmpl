@@ -7,5 +7,5 @@ elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 brew bundle --file="{{ .chezmoi.sourceDir }}/Brewfile"
-tv channel update
+tv update-channels
 {{ end -}}

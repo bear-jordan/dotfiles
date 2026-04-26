@@ -35,7 +35,7 @@ echo "Installing for devcontainers."
 # Dev container only: install mise and tools
 mise_install() {
     mise install
-    mise exec -- tv channel update
+    mise exec -- tv update-channels
 }
 
 if ! command -v mise &>/dev/null; then
