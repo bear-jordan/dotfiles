@@ -1,10 +1,11 @@
 shared:
-  - delta
   - bat
+  - delta
   - fd
   - gh
   - hadolint
   - jq
+  - kubectl
   - lazygit
   - neovim
   - rg
