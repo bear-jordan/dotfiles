@@ -34,7 +34,7 @@ echo "Installing for devcontainers."
 
 # Dev container only: install mise and tools
 mise_install() {
-    mise install --global
+    mise install --system
     mise exec -- tv channel update
 }
 
