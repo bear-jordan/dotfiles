@@ -17,6 +17,9 @@ if ! command -v chezmoi &>/dev/null; then
 fi
 
 # Apply dotfiles
+if [ -n "$REMOTE_CONTAINERS" ]; then
+    export XDG_CONFIG_HOME="$HOME/.local/config"
+fi
 "$HOME/.local/bin/chezmoi" init --apply --force --source="$DOTFILES_DIR"
 
 export PATH="$HOME/.local/bin:$PATH"
