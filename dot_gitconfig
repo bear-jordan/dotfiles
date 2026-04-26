@@ -34,3 +34,6 @@
     sort = -committerdate
     autosetuprebase = always
 
+[include]
+    path = ~/.gitconfig.local
+

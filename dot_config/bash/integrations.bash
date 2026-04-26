@@ -6,9 +6,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     elif [[ -x /usr/local/bin/brew ]]; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
+    eval "$(sesh completion bash)"
+else
+    eval "$(mise activate bash)"
 fi
-[[ -n "$REMOTE_CONTAINERS" ]] && eval "$(mise activate bash)"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-eval "$(sesh completion bash)"
 eval "$(yq shell-completion bash)"
