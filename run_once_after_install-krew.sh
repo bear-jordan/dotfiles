@@ -12,5 +12,3 @@ if ! command -v kubectl-krew &>/dev/null; then
     )
 fi
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-kubectl krew install oidc-login
