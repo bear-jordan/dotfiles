@@ -14,19 +14,19 @@ Chezmoi-managed dotfiles targeting macOS (host) and devcontainers. Single source
 
 Files in `.chezmoiignore` (`README.md`, `Brewfile`, `install.sh`, `scripts/`, `CLAUDE.md`) are not deployed to `~/`.
 
-## CRITICAL: Never edit Brewfile directly
+## CRITICAL: Never edit Brewfile or dot_config/mise/config.toml directly
 
-`Brewfile` is generated. To add/remove tools:
-1. Edit `dot_config/mise/config/shared.yaml` (shared tools — available via mise in devcontainers AND brew on mac) or `dot_config/mise/config/host.yaml` (mac-only brew formulas/casks)
-2. Run `scripts/generate-brewfile.sh`
-3. Commit both files together
+Both are generated from `tools.yaml` by CI. To add/remove tools:
+1. Edit `tools.yaml` — `shared:` for tools needed everywhere (mise in devcontainers + brew on mac), `host.formulas:` / `host.casks:` for mac-only
+2. Push to main — CI generates and commits `Brewfile` and `dot_config/mise/config.toml` automatically
 
-Tool name mapping exceptions (handled by the script): `delta` → `git-delta`, `rg` → `ripgrep`.
+Tool name mapping exceptions (handled by CI): `delta` → `git-delta`, `rg` → `ripgrep`.
 
-## Shared vs host-only tools
+## Shared vs host-only tools (`tools.yaml`)
 
-- `dot_config/mise/config/shared.yaml` — tools needed everywhere (neovim, node, bat, fd, etc.)
-- `dot_config/mise/config/host.yaml` — mac-only (`formulas:` for brew, `casks:` for apps)
+- `shared:` — tools needed everywhere (neovim, node, bat, fd, etc.)
+- `host.formulas:` — mac-only brew formulas
+- `host.casks:` — mac-only GUI apps
 
 ## Shell config (`dot_config/bash/`)
 

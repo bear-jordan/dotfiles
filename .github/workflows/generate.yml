@@ -51,6 +51,7 @@ jobs:
 
       - name: Generate mise config.toml
         run: |
+          mkdir -p dot_config/mise
           {
             echo "# Generated from tools.yaml — do not edit directly"
             echo ""
