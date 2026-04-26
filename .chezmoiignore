@@ -4,3 +4,4 @@ Brewfile
 install.sh
 scripts
 tools.yaml
+dot_devpod
