@@ -4,12 +4,15 @@ formulas:
   - podman
   - sesh
   - go
-  - television
   - tldr
   - tmux
   - tree
   - vhs
   - visidata
+  - fluxcd/tap/flux
+  - kubectl
+  - siderolabs/tap/sidero-tools
+  - k9s
 
 casks:
   - 1password

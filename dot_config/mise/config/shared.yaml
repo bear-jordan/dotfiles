@@ -21,3 +21,6 @@ tools:
   # Linters (also in Brewfile)
   hadolint: latest
   tflint: latest
+
+  # Shell pickers
+  television: latest

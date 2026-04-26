@@ -19,8 +19,10 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 if [ -z $REMOTE_CONTAINERS ]; then
+    echo "Installing for host systems."
     exit 0
 fi
+echo "Installing for devcontainers."
 
 # Dev container only: install mise and tools
 if ! command -v mise &>/dev/null; then
@@ -29,3 +31,4 @@ fi
 
 mise install node
 mise install
+tv channel update

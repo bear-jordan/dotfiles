@@ -1,0 +1,1 @@
+{"id":"homelab","uid":"default-ho-c7102","provider":{"name":"docker","options":{"DOCKER_PATH":{"value":"podman"},"INACTIVITY_TIMEOUT":{}}},"machine":{},"ide":{"name":"none"},"source":{"localFolder":"/Users/bear/personal/homelab"},"creationTimestamp":"2026-04-25T23:47:45Z","lastUsed":"2026-04-25T23:51:31Z","context":"default"}
