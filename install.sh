@@ -43,3 +43,4 @@ if ! command -v mise &>/dev/null; then
 fi
 
 mise_install
+exit 0
