@@ -1,6 +1,6 @@
 shared:
-  - bat
   - delta
+  - bat
   - fd
   - gh
   - hadolint
