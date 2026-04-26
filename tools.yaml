@@ -1,0 +1,45 @@
+shared:
+  - bat
+  - delta
+  - fd
+  - gh
+  - hadolint
+  - jq
+  - lazygit
+  - neovim
+  - node
+  - rg
+  - ruff
+  - shfmt
+  - starship
+  - stylua
+  - television
+  - tflint
+  - yq
+  - zoxide
+
+host:
+  formulas:
+    - btop
+    - cloud-nuke
+    - fluxcd/tap/flux
+    - go
+    - k9s
+    - kubectl
+    - podman
+    - sesh
+    - siderolabs/tap/sidero-tools
+    - tldr
+    - tmux
+    - tree
+    - vhs
+    - visidata
+  casks:
+    - 1password
+    - aerospace
+    - claude-code
+    - devpod
+    - ghostty
+    - google-cloud-sdk
+    - obsidian
+    - spotify

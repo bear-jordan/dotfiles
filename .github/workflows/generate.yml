@@ -1,0 +1,67 @@
+name: Generate configs
+
+on:
+  push:
+    branches: [main]
+    paths: [tools.yaml]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yq
+        run: |
+          wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          chmod +x /usr/local/bin/yq
+
+      - name: Generate Brewfile
+        run: |
+          brew_name() {
+            case "$1" in
+              delta) echo "git-delta" ;;
+              rg)    echo "ripgrep" ;;
+              *)     echo "$1" ;;
+            esac
+          }
+
+          {
+            echo "# Generated from tools.yaml — do not edit directly"
+            echo ""
+            echo "# Shared tools (also managed by mise in devcontainers)"
+            yq '.shared[]' tools.yaml | while read -r tool; do
+              echo "brew \"$(brew_name "$tool")\""
+            done
+
+            echo ""
+            echo "# Host-only formulas"
+            yq '.host.formulas[]' tools.yaml | while read -r formula; do
+              echo "brew \"$formula\""
+            done
+
+            echo ""
+            echo "# Apps"
+            yq '.host.casks[]' tools.yaml | while read -r cask; do
+              echo "cask \"$cask\""
+            done
+          } > Brewfile
+
+      - name: Generate mise config.toml
+        run: |
+          {
+            echo "# Generated from tools.yaml — do not edit directly"
+            echo ""
+            echo "[tools]"
+            yq '.shared[]' tools.yaml | while read -r tool; do
+              echo "$tool = \"latest\""
+            done
+          } > dot_config/mise/config.toml
+
+      - name: Commit generated configs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: regenerate configs from tools.yaml"
+          file_pattern: "Brewfile dot_config/mise/config.toml"
