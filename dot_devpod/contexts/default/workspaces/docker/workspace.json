@@ -1,1 +1,0 @@
-{"id":"docker","uid":"default-do-4d921","provider":{"name":"docker","options":{"DOCKER_PATH":{"value":"podman"},"INACTIVITY_TIMEOUT":{}}},"machine":{},"ide":{"name":"none"},"source":{"localFolder":"/Users/bear/personal/homelab/docker"},"creationTimestamp":"2026-04-25T23:54:38Z","lastUsed":"2026-04-25T23:54:57Z","context":"default"}
