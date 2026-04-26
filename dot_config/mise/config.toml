@@ -1,12 +1,13 @@
 # Generated from tools.yaml — do not edit directly
 
 [tools]
-delta = "latest"
 bat = "latest"
+delta = "latest"
 fd = "latest"
 gh = "latest"
 hadolint = "latest"
 jq = "latest"
+kubectl = "latest"
 lazygit = "latest"
 neovim = "latest"
 rg = "latest"

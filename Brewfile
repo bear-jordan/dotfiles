@@ -1,12 +1,13 @@
 # Generated from tools.yaml — do not edit directly
 
 # Shared tools (also managed by mise in devcontainers)
-brew "git-delta"
 brew "bat"
+brew "git-delta"
 brew "fd"
 brew "gh"
 brew "hadolint"
 brew "jq"
+brew "kubectl"
 brew "lazygit"
 brew "neovim"
 brew "ripgrep"
