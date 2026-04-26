@@ -1,0 +1,21 @@
+# Generated from tools.yaml — do not edit directly
+
+[tools]
+delta = "latest"
+bat = "latest"
+fd = "latest"
+gh = "latest"
+hadolint = "latest"
+jq = "latest"
+lazygit = "latest"
+neovim = "latest"
+node = "latest"
+rg = "latest"
+ruff = "latest"
+shfmt = "latest"
+starship = "latest"
+stylua = "latest"
+television = "latest"
+tflint = "latest"
+yq = "latest"
+zoxide = "latest"
