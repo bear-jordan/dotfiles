@@ -7,7 +7,6 @@ shared:
   - jq
   - lazygit
   - neovim
-  - node
   - rg
   - ruff
   - shfmt
@@ -21,6 +20,7 @@ shared:
 host:
   formulas:
     - btop
+    - node
     - cloud-nuke
     - fluxcd/tap/flux
     - go
