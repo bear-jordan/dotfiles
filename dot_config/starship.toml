@@ -14,7 +14,7 @@ $line_break\
 $character"""
 
 [env_var.REMOTE_CONTAINERS]
-format = "[(devpod)]($style) "
+format = "[⊙]($style) "
 style = "yellow"
 variable = "REMOTE_CONTAINERS"
 
