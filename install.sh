@@ -45,5 +45,5 @@ fi
 mise_install
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-kubectl krew install oidc-login
+mise exec -- kubectl krew install oidc-login
 exit 0
