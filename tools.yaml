@@ -4,8 +4,10 @@ shared:
   - fd
   - gh
   - hadolint
+  - helm
   - jq
   - kubectl
+  - kustomize
   - lazygit
   - neovim
   - rg
