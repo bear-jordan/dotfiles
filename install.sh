@@ -3,13 +3,17 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+fetch() {
+    if command -v curl &>/dev/null; then
+        curl -fsLS "$1"
+    else
+        wget -qO- "$1"
+    fi
+}
+
 # Install chezmoi
 if ! command -v chezmoi &>/dev/null; then
-    if command -v curl &>/dev/null; then
-        sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
-    else
-        sh -c "$(wget -qO- get.chezmoi.io)" -- -b "$HOME/.local/bin"
-    fi
+    sh -c "$(fetch get.chezmoi.io)" -- -b "$HOME/.local/bin"
 fi
 
 # Apply dotfiles
@@ -22,21 +26,21 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-if [ -z $REMOTE_CONTAINERS ]; then
+if [ -z "$REMOTE_CONTAINERS" ]; then
     echo "Installing for host systems."
     exit 0
 fi
 echo "Installing for devcontainers."
 
 # Dev container only: install mise and tools
+mise_install() {
+    mise install node
+    mise install
+    tv channel update
+}
+
 if ! command -v mise &>/dev/null; then
-    if command -v curl &>/dev/null; then
-        curl https://mise.run | sh
-    else
-        wget -qO- https://mise.run | sh
-    fi
+    fetch https://mise.run | sh
 fi
 
-mise install node
-mise install
-tv channel update
+mise_install
