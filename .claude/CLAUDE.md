@@ -28,17 +28,19 @@ Tool name mapping exceptions (handled by CI): `delta` → `git-delta`, `rg` → 
 - `host.formulas:` — mac-only brew formulas
 - `host.casks:` — mac-only GUI apps
 
-## Shell config (`dot_config/bash/`)
+## Shell config (`dot_config/shell/`)
 
-- `aliases.bash` — all aliases and functions
-- `env.bash` — environment variables
-- `integrations.bash` — shell integrations (mise, starship, zoxide, sesh, yq completions)
+Supports both bash and zsh. Both `dot_bashrc` and `dot_zshrc` source `~/.config/shell/*.sh`. Shell-specific behavior uses `$BASH_VERSION` / `$ZSH_VERSION` guards.
 
-**Key aliases:** `cm` = chezmoi, `cm-sync` = chezmoi update, `sb` = source ~/.bashrc, `k` = kubectl
+- `aliases.sh` — all aliases and functions
+- `env.sh` — environment variables
+- `integrations.sh` — shell integrations (mise, starship, zoxide, sesh, yq completions)
+
+**Key aliases:** `cm` = chezmoi, `cm-sync` = chezmoi update, `sb` = source rc file, `k` = kubectl
 
 ## Television (tv) picker functions
 
-Shell functions in `aliases.bash` with multi-action `--expect` keybindings:
+Shell functions in `aliases.sh` with multi-action `--expect` keybindings:
 
 | function | channel | enter | ctrl-s | ctrl-v | ctrl-r | ctrl-p | ctrl-d | ctrl-l | ctrl-t |
 |---|---|---|---|---|---|---|---|---|---|
@@ -71,7 +73,7 @@ Plugins are split by concern in `lua/plugins/`:
 | `git.lua` | Git plugins |
 | `workflow.lua` | Productivity plugins |
 
-tv.nvim channels mirror the bash functions (`<leader>fo` = podman-images, `<leader>fc` = podman-containers). Interactive podman commands use `vim.cmd('terminal ...')`, non-interactive use `vim.fn.jobstart(...)`.
+tv.nvim channels mirror the shell functions (`<leader>fo` = podman-images, `<leader>fc` = podman-containers). Interactive podman commands use `vim.cmd('terminal ...')`, non-interactive use `vim.fn.jobstart(...)`.
 
 ## Tmux (`dot_config/tmux/tmux.conf`)
 
@@ -93,5 +95,5 @@ Conventional commits: `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`
 ```bash
 chezmoi diff          # preview what would change
 chezmoi apply         # deploy to ~/
-source ~/.bashrc      # reload shell config
+source ~/.bashrc      # reload shell config (or ~/.zshrc)
 ```

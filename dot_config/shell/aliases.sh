@@ -5,8 +5,13 @@ alias k="kubectl"
 alias lg="lazygit"
 alias ll="ls -alh"
 alias ls="ls --color=auto"
-alias sb="source ~/.bashrc"
 alias st="tmux source-file ~/.config/tmux/tmux.conf"
+
+if [ -n "$BASH_VERSION" ]; then
+    alias sb="source ~/.bashrc"
+elif [ -n "$ZSH_VERSION" ]; then
+    alias sb="source ~/.zshrc"
+fi
 
 function cd_up() {
     cd "$(printf "%0.s../" $(seq 1 "${1:-1}"))"
