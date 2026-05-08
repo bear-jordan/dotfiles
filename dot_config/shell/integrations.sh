@@ -4,6 +4,7 @@ if [ -n "$BASH_VERSION" ]; then
     _shell="bash"
 elif [ -n "$ZSH_VERSION" ]; then
     _shell="zsh"
+    autoload -Uz compinit && compinit
 fi
 
 if [ "$(uname -s)" = "Darwin" ]; then
