@@ -21,6 +21,34 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Set login shell: prefer zsh, fall back to bash
+set_login_shell() {
+  local target=""
+  if command -v zsh &>/dev/null; then
+    target="$(command -v zsh)"
+  elif command -v bash &>/dev/null; then
+    target="$(command -v bash)"
+  else
+    return 0
+  fi
+
+  [ "$SHELL" = "$target" ] && return 0
+
+  if [ -r /etc/shells ] && ! grep -qx "$target" /etc/shells; then
+    if [ "$(id -u)" = 0 ]; then
+      echo "$target" >> /etc/shells
+    elif command -v sudo &>/dev/null; then
+      echo "$target" | sudo tee -a /etc/shells >/dev/null || return 0
+    else
+      return 0
+    fi
+  fi
+
+  command -v chsh &>/dev/null && chsh -s "$target" "$USER" || true
+}
+
+set_login_shell
+
 # Install TPM (tmux plugin manager)
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
