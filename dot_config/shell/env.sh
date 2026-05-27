@@ -1,6 +1,6 @@
 export OLDPWD="${OLDPWD:-$HOME}"
 export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
-export PATH="$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.local/work-scripts:$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export EDITOR="nvim"
 export HISTSIZE=10000
 

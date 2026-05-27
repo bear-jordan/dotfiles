@@ -7,6 +7,8 @@ later(function()
         keymaps = {
             ['l'] = { 'actions.select', opts = { close = true } },
             ['h'] = 'actions.parent',
+            ['H'] = 'actions.toggle_hidden',
+            ['q'] = 'actions.close',
         },
     })
     vim.keymap.set('n', '-', function() require('oil').open_float() end, { desc = 'Open parent directory' })
