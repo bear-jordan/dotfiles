@@ -1,6 +1,8 @@
 shared:
   - bat
   - delta
+  - direnv
+  - duckdb
   - fd
   - gh
   - hadolint
