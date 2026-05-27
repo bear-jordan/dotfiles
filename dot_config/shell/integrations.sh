@@ -20,5 +20,6 @@ fi
 eval "$(starship init "$_shell")"
 eval "$(zoxide init "$_shell")"
 eval "$(yq shell-completion "$_shell")"
+eval "$(direnv hook "$_shell")"
 
 unset _shell
