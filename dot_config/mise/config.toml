@@ -3,6 +3,8 @@
 [tools]
 bat = "latest"
 delta = "latest"
+direnv = "latest"
+duckdb = "latest"
 fd = "latest"
 gh = "latest"
 hadolint = "latest"

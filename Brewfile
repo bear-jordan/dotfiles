@@ -3,6 +3,8 @@
 # Shared tools (also managed by mise in devcontainers)
 brew "bat"
 brew "git-delta"
+brew "direnv"
+brew "duckdb"
 brew "fd"
 brew "gh"
 brew "hadolint"
