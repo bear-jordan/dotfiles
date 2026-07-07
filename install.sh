@@ -67,7 +67,8 @@ mise_install() {
 }
 
 if ! command -v mise &>/dev/null; then
-  fetch https://mise.run | sh
+  # musl build: the gnu build needs glibc >= 2.39, newer than debian bookworm's 2.36
+  fetch https://mise.run | MISE_INSTALL_MUSL=1 sh
 fi
 
 mise_install
