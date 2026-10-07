@@ -11,12 +11,39 @@ fetch() {
   fi
 }
 
-# Install chezmoi
+# --- dev container: config files and the shared mise tools, nothing else ---
+if [ -n "$REMOTE_CONTAINERS" ]; then
+  echo "Installing for devcontainers."
+
+  # chezmoi --force replaces ~/.bashrc, dropping whatever postCreateCommand appended to it
+  # (infrastructure's TF_VAR exports). Carry the non-skel lines into local.sh, which
+  # dot_bashrc sources and chezmoi leaves alone.
+  if [ -f "$HOME/.bashrc" ]; then
+    mkdir -p "$HOME/.config/shell"
+    grep -vxFf <(cat /etc/skel/.bashrc "$DOTFILES_DIR/dot_bashrc" 2>/dev/null) "$HOME/.bashrc" \
+      >>"$HOME/.config/shell/local.sh" || true
+  fi
+
+  sh -c "$(fetch get.chezmoi.io)" -- -b "$HOME/.local/bin" \
+    init --apply --force --purge-binary --source="$DOTFILES_DIR"
+
+  if ! command -v mise &>/dev/null; then
+    # musl build: the gnu build needs glibc >= 2.39
+    fetch https://mise.run | MISE_INSTALL_MUSL=1 sh
+  fi
+  export PATH="$HOME/.local/bin:$PATH"
+  mise install
+  mise exec -- tv update-channels
+  exit 0
+fi
+
+# --- host ---
+echo "Installing for host systems."
+
 if ! command -v chezmoi &>/dev/null; then
   sh -c "$(fetch get.chezmoi.io)" -- -b "$HOME/.local/bin"
 fi
 
-# Apply dotfiles
 "$HOME/.local/bin/chezmoi" init --apply --force --source="$DOTFILES_DIR"
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -54,25 +81,4 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-if [ -z "$REMOTE_CONTAINERS" ]; then
-  echo "Installing for host systems."
-  exit 0
-fi
-echo "Installing for devcontainers."
-
-# Dev container only: install mise and tools
-mise_install() {
-  mise install
-  mise exec -- tv update-channels
-}
-
-if ! command -v mise &>/dev/null; then
-  # musl build: the gnu build needs glibc >= 2.39, newer than debian bookworm's 2.36
-  fetch https://mise.run | MISE_INSTALL_MUSL=1 sh
-fi
-
-mise_install
-
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-mise exec -- kubectl krew install oidc-login
 exit 0

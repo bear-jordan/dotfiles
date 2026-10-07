@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+{{ if eq .chezmoi.os "darwin" -}}
 if ! command -v kubectl-krew &>/dev/null; then
     (
         set -x
@@ -11,4 +12,4 @@ if ! command -v kubectl-krew &>/dev/null; then
             ./"${KREW}" install krew
     )
 fi
-
+{{ end -}}

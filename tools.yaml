@@ -2,14 +2,8 @@ shared:
   - bat
   - delta
   - direnv
-  - duckdb
   - fd
-  - gh
   - hadolint
-  - helm
-  - jq
-  - kubectl
-  - kustomize
   - lazygit
   - neovim
   - rg
@@ -18,13 +12,18 @@ shared:
   - starship
   - stylua
   - television
-  - tflint
   - yq
   - zoxide
 
 host:
   formulas:
     - btop
+    - duckdb
+    - gh
+    - helm
+    - jq
+    - kustomize
+    - tflint
     - node
     - cloud-nuke
     - fluxcd/tap/flux

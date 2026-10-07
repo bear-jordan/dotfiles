@@ -24,7 +24,7 @@ Tool name mapping exceptions (handled by CI): `delta` → `git-delta`, `rg` → 
 
 ## Shared vs host-only tools (`tools.yaml`)
 
-- `shared:` — tools needed everywhere (neovim, node, bat, fd, etc.)
+- `shared:` — tools needed everywhere, including dev containers via mise (neovim, bat, fd, etc.). Never list a tool a repo's dev image pins (tflint, terraform, trivy) — mise would shadow the pinned binary in interactive shells.
 - `host.formulas:` — mac-only brew formulas
 - `host.casks:` — mac-only GUI apps
 

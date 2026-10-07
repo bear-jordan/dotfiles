@@ -13,13 +13,13 @@ if [ "$(uname -s)" = "Darwin" ]; then
     elif [ -x /usr/local/bin/brew ]; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
-    eval "$(sesh completion "$_shell")"
+    command -v sesh >/dev/null && eval "$(sesh completion "$_shell")"
 else
-    eval "$(mise activate "$_shell")"
+    command -v mise >/dev/null && eval "$(mise activate "$_shell")"
 fi
-eval "$(starship init "$_shell")"
-eval "$(zoxide init "$_shell")"
-eval "$(yq shell-completion "$_shell")"
-eval "$(direnv hook "$_shell")"
+command -v starship >/dev/null && eval "$(starship init "$_shell")"
+command -v zoxide >/dev/null && eval "$(zoxide init "$_shell")"
+command -v yq >/dev/null && eval "$(yq shell-completion "$_shell")"
+command -v direnv >/dev/null && eval "$(direnv hook "$_shell")"
 
 unset _shell
