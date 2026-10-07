@@ -1,0 +1,18 @@
+{{- if ne .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# zig is the C compiler where the image has none. zig cannot parse the Rust target triple
+# (--target=aarch64-unknown-linux-gnu) that tree-sitter's build passes, so drop it.
+for c in /usr/bin/cc /usr/local/bin/cc; do
+    [ -x "$c" ] && exec "$c" "$@"
+done
+args=()
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --target=*) ;;
+        -target | --target) shift ;;
+        *) args+=("$1") ;;
+    esac
+    shift
+done
+exec zig cc "${args[@]}"
+{{ end -}}

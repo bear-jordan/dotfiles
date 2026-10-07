@@ -12,8 +12,13 @@ shared:
   - starship
   - stylua
   - television
+  - tree-sitter
   - yq
   - zoxide
+
+# Dev containers only, via mise: zig is the C compiler nvim-treesitter builds parsers with.
+container:
+  - zig
 
 host:
   formulas:

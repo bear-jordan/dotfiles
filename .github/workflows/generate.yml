@@ -3,7 +3,7 @@ name: Generate configs
 on:
   push:
     branches: [main]
-    paths: [tools.yaml]
+    paths: [tools.yaml, .github/workflows/generate.yml]
 
 jobs:
   generate:
@@ -24,6 +24,7 @@ jobs:
             case "$1" in
               delta) echo "git-delta" ;;
               rg)    echo "ripgrep" ;;
+              tree-sitter) echo "tree-sitter-cli" ;;
               *)     echo "$1" ;;
             esac
           }
@@ -56,7 +57,7 @@ jobs:
             echo "# Generated from tools.yaml — do not edit directly"
             echo ""
             echo "[tools]"
-            yq '.shared[]' tools.yaml | while read -r tool; do
+            yq '.shared[], .container[]' tools.yaml | while read -r tool; do
               echo "$tool = \"latest\""
             done
           } > dot_config/mise/config.toml
