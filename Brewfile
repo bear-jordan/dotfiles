@@ -14,6 +14,7 @@ brew "shfmt"
 brew "starship"
 brew "stylua"
 brew "television"
+brew "tree-sitter-cli"
 brew "yq"
 brew "zoxide"
 
