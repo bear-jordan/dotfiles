@@ -6,7 +6,7 @@ alias lg="lazygit"
 alias ll="ls -alh"
 alias u="uv run"
 alias ls="ls --color=auto"
-alias st="tmux source-file ~/.config/tmux/tmux.conf"
+alias hr="herdr server reload-config"
 alias p="podman"
 alias pc="podman-compose"
 

@@ -1,0 +1,10 @@
+#!/bin/bash
+# Ghostty's command: attach to herdr's default session. Falls back to a plain shell when
+# herdr is missing, when ~/.config/herdr/no-autostart exists, or when herdr exits with an
+# error, so a broken herdr never leaves a window with nothing in it.
+herdr=/opt/homebrew/bin/herdr
+if [[ -x ${herdr} && ! -e ${HOME}/.config/herdr/no-autostart ]]; then
+  "${herdr}" || exec /bin/bash
+  exit 0
+fi
+exec /bin/bash

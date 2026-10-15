@@ -26,6 +26,7 @@ host:
     - duckdb
     - gh
     - helm
+    - herdr
     - jq
     - kustomize
     - tflint
@@ -36,10 +37,8 @@ host:
     - k9s
     - kubectl
     - podman
-    - sesh
     - siderolabs/tap/sidero-tools
     - tldr
-    - tmux
     - tree
     - vhs
     - visidata

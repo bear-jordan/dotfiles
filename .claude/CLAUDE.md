@@ -35,7 +35,7 @@ Supports both bash and zsh. Both `dot_bashrc` and `dot_zshrc` source `~/.config/
 
 - `aliases.sh` — all aliases and functions
 - `env.sh` — environment variables
-- `integrations.sh` — shell integrations (mise, starship, zoxide, sesh, yq completions)
+- `integrations.sh` — shell integrations (mise, starship, zoxide, yq completions)
 
 **Key aliases:** `cm` = chezmoi, `cm-sync` = chezmoi update, `sb` = source rc file, `k` = kubectl
 
@@ -45,8 +45,8 @@ Shell functions in `aliases.sh` with multi-action `--expect` keybindings:
 
 | function | channel | enter | ctrl-s | ctrl-v | ctrl-r | ctrl-p | ctrl-d | ctrl-l | ctrl-t |
 |---|---|---|---|---|---|---|---|---|---|
-| `ff` | files | nvim | tmux split ↓ | tmux split → | | | | | |
-| `fa` | files-hidden | nvim | tmux split ↓ | tmux split → | | | | | |
+| `ff` | files | nvim | | | | | | | |
+| `fa` | files-hidden | nvim | | | | | | | |
 | `fo` | podman-images | run bash | run sh | | run -d | pull | rmi | | |
 | `fc` | podman-containers | exec bash | exec sh | | restart | | rm -f | logs -f | stop |
 | `fe` | env | (tv native) | | | | | | | |
@@ -76,12 +76,21 @@ Plugins are split by concern in `lua/plugins/`:
 
 tv.nvim channels mirror the shell functions (`<leader>fo` = podman-images, `<leader>fc` = podman-containers). Interactive podman commands use `vim.cmd('terminal ...')`, non-interactive use `vim.fn.jobstart(...)`.
 
-## Tmux (`dot_config/tmux/tmux.conf`)
+## Herdr (`dot_config/herdr/config.toml`)
 
-- Prefix: `C-a`
-- Splits: `prefix + -` (horizontal/down), `prefix + |` (vertical/right)
-- Pane nav: `C-h/j/k/l` (vim-tmux-navigator aware)
-- Session picker: `prefix + s` → tv sesh popup
+Agent-aware terminal multiplexer. Ghostty starts it on every new window through
+`~/.local/bin/herdr-shell`; `touch ~/.config/herdr/no-autostart` gets a plain shell instead. The config is `herdr --default-config`
+verbatim: every option commented out, so everything runs on defaults until bindings are
+chosen. `hr` reloads it (`herdr server reload-config`); startup-only settings need
+`herdr server stop` and a fresh `herdr`.
+
+- `herdr` attaches to the default background session, starting it if needed. `prefix+q`
+  detaches and agents keep running.
+- Prefix: `C-b` (default). Splits: `prefix + v` (right), `prefix + -` (down). Tabs:
+  `prefix + c` / `n` / `p`. Workspaces: `prefix + w`, new `prefix + N`. All bindings:
+  `prefix + ?`.
+- The sidebar tracks `claude`, `codex` and `pi` panes as working / blocked / done / idle.
+- In nvim, `C-h/j/k/l` move between nvim splits only; herdr panes move with the prefix.
 
 ## Aerospace (`dot_config/aerospace/aerospace.toml`)
 

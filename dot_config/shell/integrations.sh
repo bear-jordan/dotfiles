@@ -13,7 +13,6 @@ if [ "$(uname -s)" = "Darwin" ]; then
     elif [ -x /usr/local/bin/brew ]; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
-    command -v sesh >/dev/null && eval "$(sesh completion "$_shell")"
 else
     command -v mise >/dev/null && eval "$(mise activate "$_shell")"
 fi

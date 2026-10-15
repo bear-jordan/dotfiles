@@ -76,9 +76,4 @@ set_login_shell() {
 
 set_login_shell
 
-# Install TPM (tmux plugin manager)
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
-
 exit 0

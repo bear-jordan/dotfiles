@@ -23,8 +23,6 @@ rm -rf "$HOME/.config/chezmoi"
 echo "==> Removing chezmoi binary..."
 rm -f "$HOME/.local/bin/chezmoi"
 
-echo "==> Removing TPM..."
-rm -rf "$HOME/.tmux/plugins/tpm"
 
 echo "==> Uninstalling Homebrew packages..."
 if command -v brew &>/dev/null; then
