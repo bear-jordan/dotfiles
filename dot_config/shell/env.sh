@@ -2,6 +2,7 @@ export OLDPWD="${OLDPWD:-$HOME}"
 export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
 export PATH="$HOME/.local/work-scripts:$HOME/.local/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export EDITOR="nvim"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export HISTSIZE=10000
 
 if [ -n "$BASH_VERSION" ]; then
