@@ -151,6 +151,12 @@ navigate_pane_up = "shift+k"
 # height = "80%"
 
 [[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+description = "run lazygit"
+
+[[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
 command = "vim-herdr-navigation.left"
