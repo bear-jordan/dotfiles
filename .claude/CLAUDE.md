@@ -88,8 +88,9 @@ settings need `herdr server stop` and a fresh `herdr`. Key names are literal cha
 - `herdr` attaches to the default background session, starting it if needed. `prefix+q`
   detaches and agents keep running.
 - Prefix: `C-a`. Splits: `prefix + |` (right), `prefix + -` (down). Tabs: `prefix + c` / `n` /
-  `p`. Workspaces: `prefix + s` picker (`j/k` workspaces, `H/J/K/L`
-  panes), new `prefix + N`. Settings: `prefix + S`. All bindings: `prefix + ?`.
+  `p`. Workspaces: `prefix + j/k` next/previous, `prefix + s` picker (`j/k` workspaces,
+  `J/K` panes), new `prefix + N`. Agents: `prefix + J/K` next/previous. `prefix + o` opens
+  the latest toast's agent. Settings: `prefix + S`. All bindings: `prefix + ?`.
 - Panes: `C-h/j/k/l` move across herdr panes and nvim splits as one (vim-herdr-navigation,
   installed at a pinned commit by `run_onchange_after_herdr-plugins.sh.tmpl`; the nvim half is
   in `workflow.lua`). This shadows readline's `C-l` and `C-k` in shells. Option-h/j/k/l
