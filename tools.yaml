@@ -12,6 +12,7 @@ shared:
   - shfmt
   - starship
   - stylua
+  - superfile
   - television
   - tree-sitter
   - yq
