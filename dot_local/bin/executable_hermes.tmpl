@@ -1,0 +1,19 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Hermes runs in a Podman container (bear-sandbox experiments/hermes); this starts the VM and the
+# container when they are down. It stays a script that waits on podman, never a shell function or
+# an exec, so herdr sees a foreground process named hermes and tracks the pane as an agent.
+set -euo pipefail
+compose_dir=${HERMES_COMPOSE_DIR:-${HOME}/work/bear-sandbox/experiments/hermes}
+
+if [[ $(podman machine inspect --format '{{"{{"}}.State{{"}}"}}') != running ]]; then
+  podman machine start >/dev/null
+fi
+if [[ $(podman container inspect --format '{{"{{"}}.State.Running{{"}}"}}' hermes 2>/dev/null) != true ]]; then
+  (cd "${compose_dir}" && PODMAN_COMPOSE_WARNING_LOGS=false podman compose up -d >/dev/null)
+fi
+
+flags=(-i)
+[[ -t 0 && -t 1 ]] && flags+=(-t)
+podman exec "${flags[@]}" hermes hermes "$@"
+{{ end -}}
