@@ -79,18 +79,22 @@ tv.nvim channels mirror the shell functions (`<leader>fo` = podman-images, `<lea
 ## Herdr (`dot_config/herdr/config.toml`)
 
 Agent-aware terminal multiplexer. Ghostty starts it on every new window through
-`~/.local/bin/herdr-shell`; `touch ~/.config/herdr/no-autostart` gets a plain shell instead. The config is `herdr --default-config`
-verbatim: every option commented out, so everything runs on defaults until bindings are
-chosen. `hr` reloads it (`herdr server reload-config`); startup-only settings need
-`herdr server stop` and a fresh `herdr`.
+`~/.local/bin/herdr-shell`; `touch ~/.config/herdr/no-autostart` gets a plain shell instead. The config is
+`herdr --default-config` with the bindings below uncommented; everything else runs on defaults.
+`hr` reloads it (`herdr server reload-config`), `herdr config check` validates it; startup-only
+settings need `herdr server stop` and a fresh `herdr`. Key names are literal characters
+(`prefix+|`, `prefix+[`), not names like `pipe`.
 
 - `herdr` attaches to the default background session, starting it if needed. `prefix+q`
   detaches and agents keep running.
-- Prefix: `C-b` (default). Splits: `prefix + v` (right), `prefix + -` (down). Tabs:
-  `prefix + c` / `n` / `p`. Workspaces: `prefix + w`, new `prefix + N`. All bindings:
-  `prefix + ?`.
+- Prefix: `C-a`. Splits: `prefix + |` (right), `prefix + -` (down). Tabs: `prefix + c` / `n` /
+  `p`. Workspaces: `prefix + s` picker, new `prefix + N`. Settings: `prefix + S`. All
+  bindings: `prefix + ?`.
+- Panes: `Option-h/j/k/l` move (Ghostty sets `macos-option-as-alt`), `prefix + tab` jumps to
+  the last pane.
+- Copy mode: `prefix + [`, vi motions, `/` search, `v` select, `y` copy, `q` exit.
 - The sidebar tracks `claude`, `codex` and `pi` panes as working / blocked / done / idle.
-- In nvim, `C-h/j/k/l` move between nvim splits only; herdr panes move with the prefix.
+- In nvim, `C-h/j/k/l` move between nvim splits only.
 
 ## Aerospace (`dot_config/aerospace/aerospace.toml`)
 
