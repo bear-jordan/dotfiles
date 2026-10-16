@@ -43,7 +43,15 @@ later(function()
     })
 end)
 
--- Split navigation
-for key, dir in pairs({ h = 'h', j = 'j', k = 'k', l = 'l' }) do
-    vim.keymap.set('n', '<C-' .. key .. '>', '<C-w>' .. dir, { desc = 'Window ' .. dir })
+-- Split navigation; at an edge, cross into the neighbouring herdr pane (vim-herdr-navigation)
+for key, dir in pairs({ h = 'left', j = 'down', k = 'up', l = 'right' }) do
+    vim.keymap.set('n', '<C-' .. key .. '>', function()
+        local prev = vim.api.nvim_get_current_win()
+        vim.cmd('wincmd ' .. key)
+        local pane = vim.env.HERDR_PANE_ID
+        if vim.api.nvim_get_current_win() == prev and pane and pane ~= '' then
+            -- --pane, not --current: --current is the server's focused pane, not necessarily this one
+            vim.fn.system({ vim.env.HERDR_BIN_PATH or 'herdr', 'pane', 'focus', '--direction', dir, '--pane', pane })
+        end
+    end, { desc = 'Window ' .. dir })
 end

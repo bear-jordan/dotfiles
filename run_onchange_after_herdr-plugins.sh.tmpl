@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Installs herdr plugins at reviewed commits; bump a ref only after reading its diff.
+command -v herdr &>/dev/null || exit 0
+herdr plugin install paulbkim-dev/vim-herdr-navigation --ref 742db891e7d1f9a550b16c01dc8a6763f2b1493a --yes

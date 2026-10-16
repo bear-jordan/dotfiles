@@ -88,13 +88,14 @@ settings need `herdr server stop` and a fresh `herdr`. Key names are literal cha
 - `herdr` attaches to the default background session, starting it if needed. `prefix+q`
   detaches and agents keep running.
 - Prefix: `C-a`. Splits: `prefix + |` (right), `prefix + -` (down). Tabs: `prefix + c` / `n` /
-  `p`. Workspaces: `prefix + s` picker, new `prefix + N`. Settings: `prefix + S`. All
-  bindings: `prefix + ?`.
-- Panes: `Option-h/j/k/l` move (Ghostty sets `macos-option-as-alt`), `prefix + tab` jumps to
-  the last pane.
+  `p`. Workspaces: `prefix + s` picker (`j/k` workspaces, `H/J/K/L`
+  panes), new `prefix + N`. Settings: `prefix + S`. All bindings: `prefix + ?`.
+- Panes: `C-h/j/k/l` move across herdr panes and nvim splits as one (vim-herdr-navigation,
+  installed at a pinned commit by `run_onchange_after_herdr-plugins.sh.tmpl`; the nvim half is
+  in `workflow.lua`). This shadows readline's `C-l` and `C-k` in shells. Option-h/j/k/l
+  belongs to AeroSpace, so herdr never sees it. `prefix + l` jumps to the last pane.
 - Copy mode: `prefix + [`, vi motions, `/` search, `v` select, `y` copy, `q` exit.
 - The sidebar tracks `claude`, `codex` and `pi` panes as working / blocked / done / idle.
-- In nvim, `C-h/j/k/l` move between nvim splits only.
 
 ## Aerospace (`dot_config/aerospace/aerospace.toml`)
 
