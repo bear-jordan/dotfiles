@@ -4,6 +4,8 @@
 # error, so a broken herdr never leaves a window with nothing in it.
 herdr=/opt/homebrew/bin/herdr
 if [[ -x ${herdr} && ! -e ${HOME}/.config/herdr/no-autostart ]]; then
+  # Ghostty hands us launchd's bare PATH, and the server it starts runs pane commands with it.
+  eval "$(/opt/homebrew/bin/brew shellenv)"
   "${herdr}" || exec /bin/bash
   exit 0
 fi
