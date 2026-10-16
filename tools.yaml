@@ -3,6 +3,7 @@ shared:
   - delta
   - direnv
   - fd
+  - fzf
   - hadolint
   - lazygit
   - neovim

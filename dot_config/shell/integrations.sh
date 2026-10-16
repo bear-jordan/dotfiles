@@ -17,6 +17,7 @@ else
     command -v mise >/dev/null && eval "$(mise activate "$_shell")"
 fi
 command -v starship >/dev/null && eval "$(starship init "$_shell")"
+command -v fzf >/dev/null && eval "$(fzf --"$_shell")"
 command -v zoxide >/dev/null && eval "$(zoxide init "$_shell")"
 command -v yq >/dev/null && eval "$(yq shell-completion "$_shell")"
 command -v direnv >/dev/null && eval "$(direnv hook "$_shell")"
