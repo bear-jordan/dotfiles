@@ -12,6 +12,10 @@ Chezmoi-managed dotfiles targeting macOS (host) and devcontainers. Single source
 | `run_once_*` | Runs once on first `chezmoi apply` |
 | `run_onchange_*` | Re-runs whenever the file content changes |
 
+Tools that read `~/Library/Application Support` on macOS keep their config in `dot_config/` and get a
+`symlink_*.tmpl` under `Library/Application Support/` pointing back at it (superfile). Without `XDG_CONFIG_HOME`
+set, `~/.config` alone never reaches them on the mac.
+
 Files in `.chezmoiignore` (`README.md`, `Brewfile`, `install.sh`, `scripts/`, `CLAUDE.md`) are not deployed to `~/`.
 
 ## CRITICAL: Never edit Brewfile or dot_config/mise/config.toml directly
