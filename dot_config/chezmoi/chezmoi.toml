@@ -1,5 +1,0 @@
-sourceDir = "~/personal/dotfiles"
-
-[git]
-    autoCommit = false
-    autoPush = false
