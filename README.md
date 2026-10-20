@@ -25,6 +25,7 @@ The following run only on macOS and are skipped in devcontainers:
 
 - **Homebrew** — installed via `run_once_install-homebrew.sh.tmpl`
 - **Brewfile** — casks and formulae applied via `run_onchange_brew-bundle.sh.tmpl`
+- **Brewfile.work** — the same, on the Impact laptop only (hostname `IR-*`)
 
 ## Devcontainers
 

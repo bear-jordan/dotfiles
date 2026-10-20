@@ -53,3 +53,9 @@ host:
     - google-cloud-sdk
     - obsidian
     - spotify
+
+# Impact laptop only (hostname IR-*): brew formulas and casks for work.
+work:
+  formulas:
+    - actionlint
+    - zizmor

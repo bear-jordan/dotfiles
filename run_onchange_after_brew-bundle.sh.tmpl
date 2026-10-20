@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 {{ if eq .chezmoi.os "darwin" -}}
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
 echo "MacOS detected."
 if [[ -x /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -7,5 +8,9 @@ elif [[ -x /usr/local/bin/brew ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
 fi
 brew bundle --file="{{ .chezmoi.sourceDir }}/Brewfile"
+{{ if and .work (stat (joinPath .chezmoi.sourceDir "Brewfile.work")) -}}
+# Brewfile.work hash: {{ include "Brewfile.work" | sha256sum }}
+brew bundle --file="{{ .chezmoi.sourceDir }}/Brewfile.work"
+{{ end -}}
 tv update-channels
 {{ end -}}

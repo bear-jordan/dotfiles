@@ -50,6 +50,19 @@ jobs:
             done
           } > Brewfile
 
+      - name: Generate Brewfile.work
+        run: |
+          {
+            echo "# Generated from tools.yaml — do not edit directly"
+            echo ""
+            yq '.work.formulas[]' tools.yaml | while read -r formula; do
+              echo "brew \"$formula\""
+            done
+            yq '.work.casks[]' tools.yaml | while read -r cask; do
+              echo "cask \"$cask\""
+            done
+          } > Brewfile.work
+
       - name: Generate mise config.toml
         run: |
           mkdir -p dot_config/mise
@@ -66,4 +79,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: regenerate configs from tools.yaml"
-          file_pattern: "Brewfile dot_config/mise/config.toml"
+          file_pattern: "Brewfile Brewfile.work dot_config/mise/config.toml"

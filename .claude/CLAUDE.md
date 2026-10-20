@@ -16,13 +16,13 @@ Tools that read `~/Library/Application Support` on macOS keep their config in `d
 `symlink_*.tmpl` under `Library/Application Support/` pointing back at it (superfile). Without `XDG_CONFIG_HOME`
 set, `~/.config` alone never reaches them on the mac.
 
-Files in `.chezmoiignore` (`README.md`, `Brewfile`, `install.sh`, `scripts/`, `CLAUDE.md`) are not deployed to `~/`.
+Files in `.chezmoiignore` (`README.md`, `Brewfile`, `Brewfile.work`, `install.sh`, `scripts/`, `CLAUDE.md`) are not deployed to `~/`.
 
-## CRITICAL: Never edit Brewfile or dot_config/mise/config.toml directly
+## CRITICAL: Never edit Brewfile, Brewfile.work or dot_config/mise/config.toml directly
 
-Both are generated from `tools.yaml` by CI. To add/remove tools:
-1. Edit `tools.yaml` — `shared:` for tools needed everywhere (mise in devcontainers + brew on mac), `host.formulas:` / `host.casks:` for mac-only
-2. Push to main — CI generates and commits `Brewfile` and `dot_config/mise/config.toml` automatically
+All three are generated from `tools.yaml` by CI. To add/remove tools:
+1. Edit `tools.yaml` — `shared:` for tools needed everywhere (mise in devcontainers + brew on mac), `host.formulas:` / `host.casks:` for mac-only, `work.formulas:` / `work.casks:` for the Impact laptop only
+2. Push to main — CI generates and commits `Brewfile`, `Brewfile.work` and `dot_config/mise/config.toml` automatically
 
 Tool name mapping exceptions (handled by CI): `delta` → `git-delta`, `rg` → `ripgrep`.
 
@@ -32,6 +32,13 @@ Tool name mapping exceptions (handled by CI): `delta` → `git-delta`, `rg` → 
 - `container:` — dev containers only, via mise (zig, the C compiler tree-sitter builds parsers with; macOS has clang)
 - `host.formulas:` — mac-only brew formulas
 - `host.casks:` — mac-only GUI apps
+- `work.formulas:` / `work.casks:` — the Impact laptop only, into `Brewfile.work`
+
+## Work vs personal machines
+
+`.chezmoi.toml.tmpl` sets `.work` true when the hostname starts with `IR-` (Impact-issued macs). Gate
+work-only files and template blocks on `{{ if .work }}`. After editing `.chezmoi.toml.tmpl`, run
+`chezmoi init` to regenerate `~/.config/chezmoi/chezmoi.toml`; `apply` does not.
 
 ## Shell config (`dot_config/shell/`)
 
