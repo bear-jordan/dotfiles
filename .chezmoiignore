@@ -9,4 +9,5 @@ dot_devpod
 dot_config/shell/local.sh
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support
+.local/bin/wrap
 {{ end }}

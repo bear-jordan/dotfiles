@@ -107,6 +107,8 @@ settings need `herdr server stop` and a fresh `herdr`. Key names are literal cha
   in `workflow.lua`). This shadows readline's `C-l` and `C-k` in shells. Option-h/j/k/l
   belongs to AeroSpace, so herdr never sees it. `prefix + l` jumps to the last pane.
 - Copy mode: `prefix + [`, vi motions, `/` search, `v` select, `y` copy, `q` exit.
+- `prefix + w` joins the lines on the clipboard into one (`~/.local/bin/wrap`, macOS only). Claude Code
+  hard-wraps long lines, so a command yanked from it arrives broken; yank, `prefix + w`, paste.
 - The sidebar tracks `claude`, `codex` and `pi` panes as working / blocked / done / idle.
 
 ## Aerospace (`dot_config/aerospace/aerospace.toml`)

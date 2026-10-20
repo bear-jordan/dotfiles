@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pbpaste | perl -0777 -pe 's/\s*\n\s*/ /g; s/^\s+|\s+$//g' | pbcopy

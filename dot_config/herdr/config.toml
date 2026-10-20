@@ -157,6 +157,12 @@ command = "lazygit"
 description = "run lazygit"
 
 [[keys.command]]
+key = "prefix+w"
+type = "shell"
+command = "$HOME/.local/bin/wrap"
+description = "join wrapped lines on the clipboard"
+
+[[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
 command = "vim-herdr-navigation.left"
