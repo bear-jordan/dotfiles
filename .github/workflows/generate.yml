@@ -11,12 +11,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install yq
-        run: |
-          wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-          chmod +x /usr/local/bin/yq
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true # git-auto-commit-action pushes with these
 
       - name: Generate Brewfile
         run: |
@@ -76,7 +73,7 @@ jobs:
           } > dot_config/mise/config.toml
 
       - name: Commit generated configs
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7.2.0
         with:
           commit_message: "chore: regenerate configs from tools.yaml"
           file_pattern: "Brewfile Brewfile.work dot_config/mise/config.toml"
